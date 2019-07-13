@@ -61,15 +61,16 @@ To deploy on your preferred server, you will need to:
 
 [Virtual Studio Code](https://code.visualstudio.com/)
 
-**APIs used:** 
-- Google Geolocation
-- Google Reverse Geocode
-- Google Calendar
+ - **APIs used:** 
 
-**Additional technologies and languages:**
-- 
-- 
-- 
+  - Google Geolocation
+  - Google Reverse Geocode
+  - Google Calendar
+
+- **Additional technologies and languages:**
+  - Sass
+  - 
+  - 
 
 #### Contributing
 
