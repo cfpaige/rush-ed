@@ -61,16 +61,14 @@ To deploy on your preferred server, you will need to:
 
 [Virtual Studio Code](https://code.visualstudio.com/)
 
- - **APIs used:** 
+ **APIs used:** 
 
-  - Google Geolocation
-  - Google Reverse Geocode
-  - Google Calendar
+   - [Google Geolocation](https://developers.google.com/maps/documentation/geolocation/intro)
+   - [Google Geocoding](https://developers.google.com/maps/documentation/geocoding/start)
+   - [Google Calendar](https://developers.google.com/calendar/)
 
-- **Additional technologies and languages:**
-  - Sass
-  - 
-  - 
+ **Additional technologies and languages:**
+   - [Sass](https://sass-lang.com/)
 
 #### Contributing
 
@@ -78,10 +76,10 @@ All bugs, feature requests, pull requests, feedback, etc., are welcome. Use the 
 
 #### Authors
 
-- **helanjose** - https://github.com/helanjose?tab=repositories
-- **drogalsky** - https://github.com/drogalsky?tab=repositories
-- **cfpaige** - https://github.com/cfpaige?tab=repositories
+- [**helanjose**](https://github.com/helanjose?tab=repositories)
+- [**drogalsky**](https://github.com/drogalsky?tab=repositories)
+- [**cfpaige**](https://github.com/cfpaige?tab=repositories)
 
 #### License
 
-Licensed under GNU GPL v3.
+Licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html).
