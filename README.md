@@ -51,17 +51,21 @@ The app's dependencies are:
 * dotenv
 * lodash@4.17.14 (vulnerability patch--ignore if your node.js version uses lodash v.4.17.12 or later)
 
-All of them are available as packages that can be installed with npm or bower, or added with yarn. Check out npm documentation for specific instructions. (E.g. for express: https://www.npmjs.com/package/express). If you're cloning this repo, it comes with package.json file that has all of those listed, so you'd only need to run
-```npm install```
+All of them are available as packages that can be installed with npm or bower, or added with yarn. Check out npm documentation for specific instructions (e.g. for [express](https://www.npmjs.com/package/express/)). If you're cloning this repo, it comes with ```package.json``` file that has all of those listed, so you'd only need to run
+```
+npm install
+```
 (if using npm) in your root folder to get all of them set up.
 
 #### Deployment
 
-This app has been deployed by linking the GitHub repo to Heroku. If you don't already have a [Heroku](https://dashboard.heroku.com/) account, you will need to sign up for one. Then log into GitHub, open Heroku, and click on <New> --> <Create new app>. Give it a name (or let Heroku choose for you), then click <Create app>. On the next page, under <Deployment Method>, choose <Connect to GitHub>, then enter the name of the GitHub repository you'd like to connect and click <Search>. Click <Connect>, choose if you'd like to deploy automatically or manually and which repo branch, and you're done.
+This app has been deployed by linking the GitHub repo to Heroku. If you don't already have a [Heroku](https://dashboard.heroku.com/) account, you will need to sign up for one. Then log into GitHub, open Heroku, and click on ```New``` --> ```Create new app```. Give it a name (or let Heroku choose for you), then click ```Create app```. On the next page, under ```Deployment Method```, choose ```Connect to GitHub```, then enter the name of the GitHub repository you'd like to link and click ```Search```. When it comes up, click ```Connect```, choose if you'd like to deploy automatically or manually and which branch, and you're done.
 
-For testing, you can deploy locally and access the app from your browser by running the app from the command line:
-```node server.js```
-and navigating to http://localhost:3000 (if you're using the PORT specified in server.js).
+For testing, you can deploy locally by running the app from the command line:
+```
+node server.js
+```
+You can then access it from your browser by navigating to http://localhost:3000 (if you're using the PORT specified in server.js).
 
 To deploy on your preferred server instead, you will need to:
 - have access to DNS record management or know the people to contact;
