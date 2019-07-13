@@ -11,7 +11,11 @@ RushEd can fill the gap in the decision-making process for young people choosing
 
 ## Overview
 
+TBD
+
 ## Demo
+
+TBD
 
 ## Getting started
 
@@ -40,15 +44,26 @@ Fork or clone the repository from https://github.com/cfpaige/rush-ed/.
 
 The app's dependencies are:
 
-* 
-* 
-* 
+* express
+* express-handlebars
+* sequelize
+* mysql2
+* dotenv
+* lodash@4.17.14 (vulnerability patch--ignore if your node.js version uses lodash v.4.17.12 or later)
 
-All of them are available as packages that can be installed with npm or bower, or added with yarn. Check out npm documentation for specific instructions. (E.g. for express: https://www.npmjs.com/package/express).
+All of them are available as packages that can be installed with npm or bower, or added with yarn. Check out npm documentation for specific instructions. (E.g. for express: https://www.npmjs.com/package/express). If you're cloning this repo, it comes with package.json file that has all of those listed, so you'd only need to run
+```npm install```
+(if using npm) in your root folder to get all of them set up.
 
 #### Deployment
 
-To deploy on your preferred server, you will need to:
+This app has been deployed by linking the GitHub repo to Heroku. If you don't already have a [Heroku](https://dashboard.heroku.com/) account, you will need to sign up for one. Then log into GitHub, open Heroku, and click on <New> --> <Create new app>. Give it a name (or let Heroku choose for you), then click <Create app>. On the next page, under <Deployment Method>, choose <Connect to GitHub>, then enter the name of the GitHub repository you'd like to connect and click <Search>. Click <Connect>, choose if you'd like to deploy automatically or manually and which repo branch, and you're done.
+
+For testing, you can deploy locally and access the app from your browser by running the app from the command line:
+```node server.js```
+and navigating to http://localhost:3000 (if you're using the PORT specified in server.js).
+
+To deploy on your preferred server instead, you will need to:
 - have access to DNS record management or know the people to contact;
 - set up the DNS records and make sure that all the settings are correct;
 - set up and test the website on the production server (where it will live);
@@ -61,14 +76,18 @@ To deploy on your preferred server, you will need to:
 
 [Virtual Studio Code](https://code.visualstudio.com/)
 
- **APIs used:** 
+**APIs used:** 
 
    - [Google Geolocation](https://developers.google.com/maps/documentation/geolocation/intro)
    - [Google Geocoding](https://developers.google.com/maps/documentation/geocoding/start)
    - [Google Calendar](https://developers.google.com/calendar/)
 
- **Additional technologies and languages:**
+**Additional technologies and languages:**
    - [Sass](https://sass-lang.com/)
+
+**Testing**
+
+  - [Travis CI](https://travis-ci.org/)
 
 #### Contributing
 
