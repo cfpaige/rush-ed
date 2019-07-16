@@ -1,5 +1,13 @@
-var db = require("../models");
+// const connection = require('../connection');
+
+require('dotenv').config();
 const axios = require('axios');
+const express = require('express');
+var app = express();
+const router = express.Router();
+
+var db = require("../models");
+
 
 module.exports = function(app) {
   // Get all examples
@@ -35,3 +43,32 @@ module.exports = function(app) {
     });
   });
 };
+
+function checkAuthentication(req, res, next) {
+    const isAuthenticate = req.isAuthenticated();
+    if (isAuthenticate) {
+        return next();
+    }
+
+    res.status(401).json({
+        message: 'Not authorized',
+        statusCode: 401
+    });
+}
+
+router.get('/user', checkAuthentication, (req, res) => {
+    connection.query('SELECT * FROM User WHERE id = ?', [req.user.id], (error, data) => {
+        if (error) {
+            return res.status(500).json({
+                message: 'Internal Error',
+                statusCode: 500
+            });
+        }
+
+        const user = data[0];
+        delete user.password;
+        return res.status(200).json(user);
+    });
+});
+
+module.exports = router;
