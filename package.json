@@ -19,8 +19,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^5.8.6",
-    "travis": "^0.1.1"
+    "sequelize": "^5.8.6"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
