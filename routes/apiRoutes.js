@@ -18,12 +18,12 @@ module.exports = function(app) {
   });
 
   app.post("/api/places", function(req, res) {
-      let placeQuery = req.body.location;
-      placeQuery = placeQuery.split(" ");
-      placeQuery = placeQuery.join('%20');
-      axios.get( "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=" + process.env.GPLACES + "&input=" + placeQuery + "&inputtype=textquery&fields=formatted_address,geometry"
+      let placeQuery = req.body;
+      let latitude = placeQuery['location[latitude]'];
+      let longitude = placeQuery['location[longitude]'];
+      axios.get( "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + process.env.GPLACES + "&location=" + latitude + ',' + longitude + "&radius=1500&type=university"
       ).then(function (response) {
-        res.json(response.data.candidates[0].geometry.location);
+        res.json(response.data);
       }).catch(function(error) {
         console.log(error);
       })
