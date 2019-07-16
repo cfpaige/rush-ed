@@ -1,6 +1,6 @@
 let userLocation;
-var location;
-let locationName;
+var itemLocation;
+let locationName = 'University of Washington';
 
 function setUserLoc(position) {
     userLocation = position.coords
@@ -16,8 +16,8 @@ function getLocation(cb) {
 }
 
 $.post('./api/places', {location: locationName} ,function(response) {
-    location = response;
-    console.log(location);
+    itemLocation = response;
+    console.log(itemLocation);
 })
 
 getLocation(setUserLoc);
