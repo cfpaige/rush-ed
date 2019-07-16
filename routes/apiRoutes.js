@@ -10,7 +10,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/places", function(req, res) {
-      let placeQuery = req.query.location;
+      let placeQuery = req.body.location;
       placeQuery = placeQuery.split(" ");
       placeQuery = placeQuery.join('%20');
       axios.get( "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=" + process.env.GPLACES + "&input=" + placeQuery + "&inputtype=textquery&fields=formatted_address,geometry"
