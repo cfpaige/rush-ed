@@ -1,8 +1,2 @@
 DROP DATABASE IF EXISTS rushed_db;
 CREATE DATABASE rushed_db;
-
-DROP DATABASE IF EXISTS colleges_db;
-CREATE DATABASE colleges_db;
-
-DROP DATABASE IF EXISTS careers_db;
-CREATE DATABASE careers_db;
