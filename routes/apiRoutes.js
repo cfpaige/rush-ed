@@ -1,4 +1,5 @@
 var db = require("../models");
+const axios = require('axios');
 
 module.exports = function(app) {
   // Get all examples
@@ -6,6 +7,18 @@ module.exports = function(app) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
+  });
+
+  app.post("/api/places", function(req, res) {
+      let placeQuery = req.query.location;
+      placeQuery = placeQuery.split(" ");
+      placeQuery = placeQuery.join('%20');
+      axios.get( "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=" + process.env.GPLACES + "&input=" + placeQuery + "&inputtype=textquery&fields=formatted_address,geometry"
+      ).then(function (response) {
+        res.json(response.data.candidates[0].geometry.location);
+      }).catch(function(error) {
+        console.log(error);
+      })
   });
 
   // Create a new example
