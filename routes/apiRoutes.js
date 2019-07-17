@@ -1,10 +1,13 @@
-var db = require("../models");
+// const connection = require('../connection');
+
+require('dotenv').config();
 const axios = require('axios');
-var express = require("express");
+const express = require('express');
+var app = express();
+const router = express.Router();
 
+var db = require("../models");
 
-var router = express.Router();
-var router = express.Router();
 
 module.exports = function(app) {
   // Get all examples
@@ -15,12 +18,12 @@ module.exports = function(app) {
   });
 
   app.post("/api/places", function(req, res) {
-      let placeQuery = req.body.location;
-      placeQuery = placeQuery.split(" ");
-      placeQuery = placeQuery.join('%20');
-      axios.get( "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=" + process.env.GPLACES + "&input=" + placeQuery + "&inputtype=textquery&fields=formatted_address,geometry"
+      let placeQuery = req.body;
+      let latitude = placeQuery['location[latitude]'];
+      let longitude = placeQuery['location[longitude]'];
+      axios.get( "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + process.env.GPLACES + "&location=" + latitude + ',' + longitude + "&radius=1500&type=university"
       ).then(function (response) {
-        res.json(response.data.candidates[0].geometry.location);
+        res.json(response.data);
       }).catch(function(error) {
         console.log(error);
       })
@@ -65,3 +68,32 @@ module.exports = function(app) {
 
 
 };
+
+function checkAuthentication(req, res, next) {
+    const isAuthenticate = req.isAuthenticated();
+    if (isAuthenticate) {
+        return next();
+    }
+
+    res.status(401).json({
+        message: 'Not authorized',
+        statusCode: 401
+    });
+}
+
+router.get('/user', checkAuthentication, (req, res) => {
+    connection.query('SELECT * FROM User WHERE id = ?', [req.user.id], (error, data) => {
+        if (error) {
+            return res.status(500).json({
+                message: 'Internal Error',
+                statusCode: 500
+            });
+        }
+
+        const user = data[0];
+        delete user.password;
+        return res.status(200).json(user);
+    });
+});
+
+module.exports = router;

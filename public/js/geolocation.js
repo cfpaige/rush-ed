@@ -1,23 +1,26 @@
 let userLocation;
-var itemLocation;
-let locationName = 'University of Washington';
+var nearbyThings;
+let searchLocation;
 
 function setUserLoc(position) {
-    userLocation = position.coords
-    console.log(userLocation);
+    userLocation = position.coords;
+    placeFinder(userLocation);
 }
+// getLocation(setUserLoc);
 
 function getLocation(cb) {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(cb);//think i need a function here
+        navigator.geolocation.getCurrentPosition(cb);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 
-$.post('./api/places', {location: locationName} ,function(response) {
-    itemLocation = response;
-    console.log(itemLocation);
-})
+function placeFinder(locationName) {
+    $.post('./api/places', { location: locationName }, function (response) {
+        nearbyThings = response;
+    })
+}
 
-getLocation(setUserLoc);
+
+
