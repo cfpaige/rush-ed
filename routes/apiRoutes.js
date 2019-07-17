@@ -8,16 +8,14 @@ const router = express.Router();
 
 var db = require("../models");
 
-
-module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
+  router.get("/api/examples", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
 
-  app.post("/api/places", function(req, res) {
+  router.post("/api/places", function(req, res) {
       let placeQuery = req.body;
       let latitude = placeQuery['location[latitude]'];
       let longitude = placeQuery['location[longitude]'];
@@ -29,20 +27,29 @@ module.exports = function(app) {
       })
   });
 
+  router.get("/api/apprenticeship/:field/:place", function(req, res) {
+    let field = req.params.field;
+    let place = req.params.place;
+    console.log('did we get here?');
+    axios.get("https://api.careeronestop.org/v1/apprenticeshipfinder/" + process.env.COSID + "/" + place + "/25", {headers: {Authorization: "Bearer " + process.env.COSTOKEN}})
+    .then(function(response) {
+      res.json(response.data);
+    })
+  })
+
   // Create a new example
-  app.post("/api/examples", function(req, res) {
+  router.post("/api/examples", function(req, res) {
     db.Example.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
+  router.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);
     });
   });
-};
 
 function checkAuthentication(req, res, next) {
     const isAuthenticate = req.isAuthenticated();
