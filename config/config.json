@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "helan123",
     "database": "rushed_db",
     "host": "localhost",
     "dialect": "mysql"

@@ -1,5 +1,10 @@
 var db = require("../models");
 const axios = require('axios');
+var express = require("express");
+
+
+var router = express.Router();
+var router = express.Router();
 
 module.exports = function(app) {
   // Get all examples
@@ -34,4 +39,29 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
+
+
+
+  app.post("/api/college", function(req, res) {
+     var city=req.body.city;
+    var dept=req.body.dept;
+    console.log(req.body.city);
+    console.log(req.body.dept);
+    
+    axios.get( "https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key="+process.env.college+"&latest.academics.program.bachelors.computer=1&school.city="+city+"&_fields=id,school.name,id,school.zip,school.school_url,school.accreditor,latest.admissions.admission_rate.overall"
+    ).then(function (response) {
+    
+     
+      return res.json(response.data.results);
+    }).catch(function(error) {
+      console.log(error);
+    })
+});
+
+
+      
+
+
+
 };

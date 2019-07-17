@@ -20,8 +20,17 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/college",function(req,res)
+  {
+    console.log("html route");
+   res.render("college");
+  })
+
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
+
+
 };
