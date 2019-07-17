@@ -1,0 +1,52 @@
+    
+<h1>hi everyone!</h1>
+<form id="add">
+    city: <input type="text" name="city" id="city" ><br>
+     department: <input type="text" name="dept" id="dept" ><br>
+    <input  type="submit"  value="Submit">
+</form>
+<div id="data-view"></div>
+
+{{!-- <button type="button" id="addme">Click Me!</button> --}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+console.log("inside handle bar");
+$("#add").on("submit", function (event) {
+    event.preventDefault();
+
+    //console.log("hello 15");
+
+    
+    //console.log(city);
+    var citydata={
+        city:$("#city").val(),
+        dept:$("#dept").val()
+       };
+    //console.log("city"+city_data.city);
+    $.ajax({
+        url :"/api/college",
+        method: "POST", 
+        data:citydata
+    
+    },            
+    ).then(function (response) {
+        console.log(response);
+        var arr=[''];
+         var coll_name=response[0]['school.name'];
+         $("#data-view").text("COLLEGE:"+response[0]['school.name']+'\n'+"College WEBSITE:"+response[0]['school.school_url']+"\n"+"College Accreditor:"+response[0]['school.accreditor']+
+         
+         "\n"+"ADMISSION RATE:"+response[0]['latest.admissions.admission_rate.overall']+"\n"+"zip-code:"+response[0]['school.zip']);
+         
+           } );
+             
+        
+        
+        
+
+            
+        });
+    
+    
+</script>
+
