@@ -1,23 +1,73 @@
-// const connection = require('../connection');
+const connection = require('../connection');
 
 require('dotenv').config();
 const axios = require('axios');
 const express = require('express');
-var app = express();
 const router = express.Router();
 
-var db = require("../models");
+// var users = require("../models/user.js");
+// var favs = require("../models/fav.js")
 
+// // Create all our routes and set up logic within those routes where required.
+// router.get("/", function(req, res) {
+//   cat.all(function(data) {
+//     var hbsObject = {
+//       cats: data
+//     };
+//     console.log(hbsObject);
+//     res.render("index", hbsObject);
+//   });
+// });
 
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
+// router.post("/api/cats", function(req, res) {
+//   cat.create([
+//     "name", "sleepy"
+//   ], [
+//     req.body.name, req.body.sleepy
+//   ], function(result) {
+//     // Send back the ID of the new quote
+//     res.json({ id: result.insertId });
+//   });
+// });
+
+// router.put("/api/cats/:id", function(req, res) {
+//   var condition = "id = " + req.params.id;
+
+//   console.log("condition", condition);
+
+//   cat.update({
+//     sleepy: req.body.sleepy
+//   }, condition, function(result) {
+//     if (result.changedRows == 0) {
+//       // If no rows were changed, then the ID must not exist, so 404
+//       return res.status(404).end();
+//     } else {
+//       res.status(200).end();
+//     }
+//   });
+// });
+
+// router.delete("/api/cats/:id", function(req, res) {
+//   var condition = "id = " + req.params.id;
+
+//   cat.delete(condition, function(result) {
+//     if (result.affectedRows == 0) {
+//       // If no rows were changed, then the ID must not exist, so 404
+//       return res.status(404).end();
+//     } else {
+//       res.status(200).end();
+//     }
+//   });
+// });
+
+router.get('/', function (req, res) {
+    res.render('index');
   });
 
-  app.post("/api/places", function(req, res) {
+
+module.exports = function(router) {
+
+  router.post("/api/places", function(req, res) {
       let placeQuery = req.body;
       let latitude = placeQuery['location[latitude]'];
       let longitude = placeQuery['location[longitude]'];
@@ -28,47 +78,34 @@ module.exports = function(app) {
         console.log(error);
       })
   });
-
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
 };
 
-function checkAuthentication(req, res, next) {
-    const isAuthenticate = req.isAuthenticated();
-    if (isAuthenticate) {
-        return next();
-    }
 
-    res.status(401).json({
-        message: 'Not authorized',
-        statusCode: 401
-    });
-}
+// // function checkAuthentication(req, res, next) {
+// //     const isAuthenticate = req.isAuthenticated();
+// //     if (isAuthenticate) {
+// //         return next();
+// //     }
 
-router.get('/user', checkAuthentication, (req, res) => {
-    connection.query('SELECT * FROM User WHERE id = ?', [req.user.id], (error, data) => {
-        if (error) {
-            return res.status(500).json({
-                message: 'Internal Error',
-                statusCode: 500
-            });
-        }
+// //     res.status(401).json({
+// //         message: 'Not authorized',
+// //         statusCode: 401
+// //     });
+// // }
 
-        const user = data[0];
-        delete user.password;
-        return res.status(200).json(user);
-    });
-});
+// // router.get('/user', checkAuthentication, (req, res) => {
+// //     connection.query('SELECT * FROM User WHERE id = ?', [req.user.id], (error, data) => {
+// //         if (error) {
+// //             return res.status(500).json({
+// //                 message: 'Internal Error',
+// //                 statusCode: 500
+// //             });
+// //         }
+
+// //         const user = data[0];
+// //         delete user.password;
+// //         return res.status(200).json(user);
+// //     });
+// // });
 
 module.exports = router;
