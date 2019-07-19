@@ -4,15 +4,15 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 
-var app = express();
+//var app = express();
 
 var db = require("../models");
 
-module.exports = function(app) {
+
   // Load index page
-  app.get("/", function(req, res) {
+  router.get("/", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
+      res.render("home", {
         msg: "RushEd has landed!",
         examples: dbExamples
       });
@@ -20,7 +20,7 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
+  router.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       res.render("example", {
         example: dbExample
@@ -28,20 +28,34 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/college",function(req,res)
+  router.get("/college",function(req,res)
   {
     console.log("html route");
    res.render("college");
-  })
+  });
+  router.get("/",function(req,res)
+  {
+    console.log("html route");
+   res.render("home");
+  });
+  router.get("/studentprofile",function(req,res)
+  {
+    console.log("html route");
+   res.render("studentprofile");
+  });
+  router.get("/college/job",function(req,res)
+  {
+    console.log("html route");
+   res.render("college");
+  });
 
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  router.get("*", function(req, res) {
     res.render("404");
   });
 
 
-};
 
 function checkAuthentication(req, res, next) {
     const isAuthenticate = req.isAuthenticated();
