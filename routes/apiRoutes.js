@@ -1,4 +1,4 @@
-const connection = require('../connection');
+const connection = require('../config/connection');
 
 require('dotenv').config();
 const axios = require('axios');
@@ -65,23 +65,19 @@ const router = express.Router();
 // });
 // ==============================================================================
 
-module.exports = function (router) {
 
-    router.get('/', function (req, res) {
-        res.render('index');
-    });
 
-    router.post("/api/places", function (req, res) {
-        let placeQuery = req.body;
-        let latitude = placeQuery['location[latitude]'];
-        let longitude = placeQuery['location[longitude]'];
-        axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + process.env.GPLACES + "&location=" + latitude + ',' + longitude + "&radius=1500&type=university"
-        ).then(function (response) {
-            res.json(response.data);
-        }).catch(function (error) {
-            console.log(error);
-        })
-    });
+    // router.post("/places", function (req, res) {
+    //     let placeQuery = req.body;
+    //     let latitude = placeQuery['location[latitude]'];
+    //     let longitude = placeQuery['location[longitude]'];
+    //     axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + process.env.GPLACES + "&location=" + latitude + ',' + longitude + "&radius=1500&type=university"
+    //     ).then(function (response) {
+    //         res.json(response.data);
+    //     }).catch(function (error) {
+    //         console.log(error);
+    //     })
+    // });
 
     router.post("/api/places", function (req, res) {
         let placeQuery = req.body;
@@ -157,7 +153,6 @@ module.exports = function (router) {
             console.log(error);
         })
     });
-};
 
 // function checkAuthentication(req, res, next) {
 //   const isAuthenticate = req.isAuthenticated();
