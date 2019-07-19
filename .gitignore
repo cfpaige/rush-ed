@@ -61,3 +61,5 @@ typings/
 .next
 
 .DS_Store
+public/assets/img/structure.drawio
+public/assets/img/tables.drawio
