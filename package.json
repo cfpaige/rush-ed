@@ -18,5 +18,14 @@
   "devDependencies": {
     "cross-env": "^5.2.0",
     "prettier": "^1.17.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cfpaige/rush-ed.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/cfpaige/rush-ed/issues"
+  },
+  "homepage": "https://github.com/cfpaige/rush-ed#readme"
 }
