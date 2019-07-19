@@ -16,7 +16,7 @@ CREATE TABLE favs
 (
 	fav_id int NOT NULL,
 	fav_name varchar(255) NOT NULL,
-	fav_url varchar(320) NOT NULL,
+	fav_url varchar(320) NOT NULL DEFAULT 'https://www.google.com',
 	fav_type varchar(255) NOT NULL,
 	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (fav_id)
