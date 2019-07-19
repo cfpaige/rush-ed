@@ -1,20 +1,15 @@
-const connection = require('../connection');
+const connection = require('../config/connection.js');
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
-var app = express();
+var apiRoutes = require('./apiRoutes');
 
-module.exports = function(app) {
-
-//   // Load index page
-//   app.get("/", function(req, res) {
-//     db.Example.findAll({}).then(function(dbExamples) {
-//       res.render("index", {
-//         msg: "RushEd has landed!",
-//         examples: dbExamples
-//       });
-//     });
-//   });
+  // Load index page
+  router.get("/", function(req, res) {
+      res.render("index", {
+        msg: "RushEd has landed!",
+      });
+  });
 
 //   // Load example page and pass in an example by id
 //   app.get("/example/:id", function(req, res) {
@@ -25,18 +20,19 @@ module.exports = function(app) {
 //     });
 //   });
 
-  app.get("/college", function (req, res) {
+  router.get("/college", function (req, res) {
     console.log("html route");
     res.render("college");
   })
 
 
   // Render 404 page for any unmatched routes
-  app.get("*", function (req, res) {
+  router.get("*", function (req, res) {
     res.render("404");
   });
 
-};
+  
+
 
 // // function checkAuthentication(req, res, next) {
 // //     const isAuthenticate = req.isAuthenticated();
@@ -80,4 +76,4 @@ module.exports = function(app) {
 // //     res.render('notauthorized', { title: 'Not Authorized - Pagw' })
 // // });
 
-module.exports = app; // Is this correct, or should we drop app and use router throughout? Can we export a module with the same name from several files?
+module.exports = router; // Is this correct, or should we drop app and use router throughout? Can we export a module with the same name from several files?

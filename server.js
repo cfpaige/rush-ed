@@ -20,8 +20,11 @@ app.set("view engine", "handlebars");
 app.use(methodOverride('_method'));
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/rushed_controller.js");
+var routes = require("./routes/htmlRoutes");
+var apiRoutes = require("./routes/apiRoutes");
 
+
+app.use(apiRoutes);
 app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
