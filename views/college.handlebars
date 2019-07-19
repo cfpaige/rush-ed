@@ -201,12 +201,31 @@ $("#find").on("submit", function (event) {
     
     },            
     ).then(function (response) {
-        console.log(response);
-       
+        //console.log(response);
+        //console.log(typeof(response));
+
+        var json=JSON.parse(response);
+
+        
+         
+        var job_location=json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionLocation[0].LocationName;
+        var orgname=json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.OrganizationName;
+        
+       var job_title1=json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionTitle;
+       var job_title2=job_title=json.SearchResult.SearchResultItems[1].MatchedObjectDescriptor.PositionTitle;
+       var job_title3= job_title=json.SearchResult.SearchResultItems[2].MatchedObjectDescriptor.PositionTitle;
+       var job_title4=json.SearchResult.SearchResultItems[3].MatchedObjectDescriptor.PositionTitle;
+      
+       console.log(job_title1,job_title2,job_title3,job_title4);
+   
+   
+   
+   
+    });
 });
         
          
-           } );
+     
 
 
 

@@ -84,13 +84,14 @@ router.post("/api/college/job", function(req, res) {
     
   var place=req.body.place;
   var job=req.body.job;
+  console.log("job"+job);
   var host = 'data.usajobs.gov';  
   var userAgent = 'helankjose@gmail.com';  
   var authKey=process.env.job;
   //var query_url="https://data.usajobs.gov/api/search?JobCategoryCode=2210&Keyword=Software Development&LocationName=Washington";
   //var authKey = process.env.job;    
   request({      
-    url: 'https://data.usajobs.gov/api/search?JobCategoryCode=2210&page=1&ResultsPerPage=1&Keyword=Software Development&LocationName=Washington, DC',      
+    url: 'https://data.usajobs.gov/api/search?page=2&ResultsPerPage=4&Keyword='+job+'&LocationName='+place,      
     method: 'GET',      
     headers: {          
         "Host": host,          
@@ -98,7 +99,7 @@ router.post("/api/college/job", function(req, res) {
         "Authorization-Key": authKey      
     }  
 }, function(error, response, body) {      
-    var data = JSON.parse(body);  
+    //var data = JSON.parse(body);  
     //console.log(data);
     console.log(body);
     return res.json(body);
