@@ -23,31 +23,31 @@ app.use(methodOverride('_method'));
 var routes = require("./routes/htmlRoutes");
 var apiRoutes = require("./routes/apiRoutes");
 
-
 app.use(apiRoutes);
 app.use(routes);
 
-// Start our server so that it can begin listening to client requests.
-app.listen(PORT, function() {
-  // Log (server-side) when our server has started
-  console.log("Server listening on: http://localhost:" + PORT);
-});
+// // Start our server so that it can begin listening to client requests.
+// app.listen(PORT, function() {
+//   // Log (server-side) when our server has started
+//   console.log("Server listening on: http://localhost:" + PORT);
+// });
 
+var syncOptions = { force: false };
 
-// fetching directly from orm, no controller:
-// var orm = require("./config/orm.js");
+// If running a test, set syncOptions.force to true
+// clearing the `testdb`
+if (process.env.NODE_ENV === "test") {
+  syncOptions.force = true;
+};
 
-// // For each of the following select methods, a string argument containing wildcard character ("*")
-// // could work in most environments, but some MySQL servers (like MAMP) will return an error.
-
-// // Console log all the party_name's.
-// orm.select("party_name", "parties");
-
-// // Console log all the client_name's.
-// orm.select("client_name", "clients");
-
-// // Console log all the parties that have a party-type of grown-up.
-// orm.selectWhere("parties", "party_type", "grown-up");
-
-// // Console log all the clients and their parties.
-// orm.leftJoin(["client_name", "party_name"], "clients", "parties", "id", "client_id");
+// Starting the server, syncing our models ------------------------------------/
+db.sequelize.sync(syncOptions).then(function() {
+  app.listen(PORT, function() {
+    console.log(
+      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      PORT,
+      
+      PORT
+    )
+  })
+})
