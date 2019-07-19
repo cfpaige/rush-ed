@@ -1,60 +1,53 @@
 require("dotenv").config();
+var methodOverride = require("method-override");
 var express = require("express");
+var app = express();
 var exphbs = require("express-handlebars");
-const passport = require('./passportAuthentication');
-const apiRoutes = require('./routes/apiRoutes');
-const authenticationRoute = require('./routes/authentication');
-const htmlRoutes = require('./routes/htmlRoutes');
-const cookieSession = require('cookie-session');
-
-var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
 
-var app = express();
-
-// Middleware
-app.use(express.urlencoded({ extended: false }));
+// Parse application body using middleware:
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
-app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000, // one day in miliseconds
-  name: 'session',
-  keys: ['key1', 'key2']
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 
-// Handlebars
+// Use Handlebars:
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set("view engine", "handlebars");
 
-// Routes
-// require("./routes/apiRoutes")(app);
-// require("./routes/authentication")(app);
-// require("./routes/htmlRoutes")(app);
+// Allow use of methods other than GET and POST in HTTP:
+app.use(methodOverride('_method'));
 
-app.use('/', authenticationRoute);
-app.use('/', apiRoutes);
-app.use('/', htmlRoutes);
+// Import routes and give the server access to them.
+var routes = require("./routes/htmlRoutes");
+var apiRoutes = require("./routes/apiRoutes");
 
-var syncOptions = { force: false };
 
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}
+app.use(apiRoutes);
+app.use(routes);
 
-// Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
+// Start our server so that it can begin listening to client requests.
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });
 
-module.exports = app;
+
+// fetching directly from orm, no controller:
+// var orm = require("./config/orm.js");
+
+// // For each of the following select methods, a string argument containing wildcard character ("*")
+// // could work in most environments, but some MySQL servers (like MAMP) will return an error.
+
+// // Console log all the party_name's.
+// orm.select("party_name", "parties");
+
+// // Console log all the client_name's.
+// orm.select("client_name", "clients");
+
+// // Console log all the parties that have a party-type of grown-up.
+// orm.selectWhere("parties", "party_type", "grown-up");
+
+// // Console log all the clients and their parties.
+// orm.leftJoin(["client_name", "party_name"], "clients", "parties", "id", "client_id");
