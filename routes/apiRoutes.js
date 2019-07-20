@@ -18,104 +18,7 @@ var db = require("../models");
     });
   });
 
-  router.post("/api/places", function(req, res) {
-      let placeQuery = req.body;
-      let latitude = placeQuery['location[latitude]'];
-      let longitude = placeQuery['location[longitude]'];
-      axios.get( "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + process.env.GPLACES + "&location=" + latitude + ',' + longitude + "&radius=1500&type=university"
-      ).then(function (response) {
-        res.json(response.data);
-      }).catch(function(error) {
-        console.log(error);
-      })
-  });
 
-  // Create a new example
-  router.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  router.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-const router = express.Router();
-
-// var users = require("../models/user.js");
-// var favs = require("../models/fav.js");
-// var user_favs = require(../models/user_favs.js);
-
-
-// ================================= BASIC CRUD =================================
-
-// // Create all our routes and set up logic within those routes where required.
-// router.get("/", function(req, res) {
-//   cat.all(function(data) {
-//     var hbsObject = {
-//       cats: data
-//     };
-//     console.log(hbsObject);
-//     res.render("index", hbsObject);
-//   });
-// });
-
-// router.post("/api/cats", function(req, res) {
-//   cat.create([
-//     "name", "sleepy"
-//   ], [
-//     req.body.name, req.body.sleepy
-//   ], function(result) {
-//     // Send back the ID of the new quote
-//     res.json({ id: result.insertId });
-//   });
-// });
-
-// router.put("/api/cats/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
-
-//   console.log("condition", condition);
-
-//   cat.update({
-//     sleepy: req.body.sleepy
-//   }, condition, function(result) {
-//     if (result.changedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
-
-// router.delete("/api/cats/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
-
-//   cat.delete(condition, function(result) {
-//     if (result.affectedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
-// ==============================================================================
-
-
-
-    // router.post("/places", function (req, res) {
-    //     let placeQuery = req.body;
-    //     let latitude = placeQuery['location[latitude]'];
-    //     let longitude = placeQuery['location[longitude]'];
-    //     axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + process.env.GPLACES + "&location=" + latitude + ',' + longitude + "&radius=1500&type=university"
-    //     ).then(function (response) {
-    //         res.json(response.data);
-    //     }).catch(function (error) {
-    //         console.log(error);
-    //     })
-    // });
 
     router.post("/api/places", function (req, res) {
         let placeQuery = req.body;
@@ -142,6 +45,8 @@ const router = express.Router();
       return res.json(response.data.results);
     }).catch(function(error) {
       console.log(error);
+    })
+
     router.get("/api/apprenticeship/:place", function (req, res) {
         let place = req.params.place; //ex: Seattle,WA (city and state or just state)
         axios.get("https://api.careeronestop.org/v1/apprenticeshipfinder/" + process.env.COSID + "/" + place + "/25", { headers: { Authorization: "Bearer " + process.env.COSTOKEN } })
@@ -209,11 +114,7 @@ router.post("/api/college/job", function(req, res) {
 });
 
 
-function checkAuthentication(req, res, next) {
-    const isAuthenticate = req.isAuthenticated();
-    if (isAuthenticate) {
-        return next();
-    }
+
     router.get("/api/licenses/:field/:location", function (req, res) {
         let field = req.params.field; //ex: doctors
         let location = req.params.location; //ex: WA (NOT city and state)
@@ -222,10 +123,10 @@ function checkAuthentication(req, res, next) {
                 res.json(response.data);
             })
             .catch(function (error) {
-                console.log(error)
+                console.log(error);
             })
     })
-
+  
     // router.get("/api/apprenticeship/sponsers/:field/:place", function (req, res) {
     //   let field = req.params.field;
     //   let place = req.params.place;

@@ -1,4 +1,4 @@
-consts connection = require('../config/connection.js');
+const connection = require('../config/connection.js');
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
