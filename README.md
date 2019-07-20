@@ -61,6 +61,8 @@ npm install
 
 This app has been deployed by linking the GitHub repo to Heroku. If you don't already have a [Heroku](https://dashboard.heroku.com/) account, you will need to sign up for one. Then log into GitHub, open Heroku, and click on ```New``` --> ```Create new app```. Give it a name (or let Heroku choose for you), then click ```Create app```. On the next page, under ```Deployment Method```, choose ```Connect to GitHub```, then enter the name of the GitHub repository you'd like to link and click ```Search```. When it comes up, click ```Connect```, choose if you'd like to deploy automatically or manually and which branch, and you're done.
 
+Syncing up with JawsDB (Heroku): https://medium.com/@ng.eric314/node-js-setting-up-sequelized-for-herokus-jawsdb-while-using-environmental-variables-3f4a0535c0fa
+
 For testing, you can deploy locally by running the app from the command line:
 ```
 node server.js

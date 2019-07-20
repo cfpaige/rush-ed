@@ -3,28 +3,14 @@ const connection = require('../config/connection');
 require('dotenv').config();
 const axios = require('axios');
 const express = require('express');
-var request = require('request');   
-//var app = express();
 const router = express.Router();
-
-var db = require("../models");
-
-
-
-  // Get all examples
-  router.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
-
+const request = require('request');
 
     router.post("/api/places", function (req, res) {
         let placeQuery = req.body;
         let latitude = placeQuery['location[latitude]'];
         let longitude = placeQuery['location[longitude]'];
-        axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + process.env.GPLACES + "&location=" + latitude + ',' + longitude + "&radius=1500&type=university"
+        axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + process.env.GOOGLEKEY + "&location=" + latitude + ',' + longitude + "&radius=1500&type=university"
         ).then(function (response) {
             res.json(response.data);
         }).catch(function (error) {
@@ -47,6 +33,8 @@ var db = require("../models");
       console.log(error);
     })
 
+  });
+
     router.get("/api/apprenticeship/:place", function (req, res) {
         let place = req.params.place; //ex: Seattle,WA (city and state or just state)
         axios.get("https://api.careeronestop.org/v1/apprenticeshipfinder/" + process.env.COSID + "/" + place + "/25", { headers: { Authorization: "Bearer " + process.env.COSTOKEN } })
@@ -56,7 +44,7 @@ var db = require("../models");
                 console.log(err);
                 res.end()
             })
-    })
+    });
 
     router.get("/api/certification/:field", function (req, res) {
         let field = req.params.field; //ex: doctors
@@ -112,9 +100,6 @@ router.post("/api/college/job", function(req, res) {
 });
 
 });
-
-
-
     router.get("/api/licenses/:field/:location", function (req, res) {
         let field = req.params.field; //ex: doctors
         let location = req.params.location; //ex: WA (NOT city and state)
@@ -126,18 +111,6 @@ router.post("/api/college/job", function(req, res) {
                 console.log(error);
             })
     })
-  
-    // router.get("/api/apprenticeship/sponsers/:field/:place", function (req, res) {
-    //   let field = req.params.field;
-    //   let place = req.params.place;
-    //   console.log("https://api.careeronestop.org/v1/apprenticeshipfinder/" + process.env.COSID + "/" + field + "/" + place + "/100")
-    //   axios.get("https://api.careeronestop.org/v1/apprenticeshipfinder/" + process.env.COSID + "/" + field + "/" + place + "/100", { headers: { Authorization: "Bearer " + process.env.COSTOKEN } })
-    //     .then(function (response) {
-    //       res.json(response.data);
-    //     }).catch(function(err) {
-    //       console.log(err);
-    //     })
-    // })
 
     router.post("/api/college", function (req, res) {
         var city = req.body.city;
