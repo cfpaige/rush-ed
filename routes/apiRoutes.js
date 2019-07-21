@@ -1,4 +1,4 @@
-const connection = require('../config/connection');
+// const connection = require('../config/connection'); FIXME: cannot find module but i don't think we need this?
 
 require('dotenv').config();
 const axios = require('axios');

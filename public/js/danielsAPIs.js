@@ -66,5 +66,3 @@ function grabLicenseData(field, state) {
         }
     })
 }
-
-grabLicenseData('doctor', 'WA');

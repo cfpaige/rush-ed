@@ -1,4 +1,4 @@
-const connection = require('../config/connection.js');
+// const connection = require('../config/connection.js'); FIXME: cannot find this but i don't think we actually need this?
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
@@ -51,15 +51,6 @@ router.get("*", function (req, res) {
   res.render("404");
 });
 
-<<<<<<< HEAD
-  // Render 404 page for any unmatched routes
-  router.get("*", function (req, res) {
-    res.render("404");
-  });
-=======
-
-
-
 // // function checkAuthentication(req, res, next) {
 // //     const isAuthenticate = req.isAuthenticated();
 // //     if (isAuthenticate) {
@@ -103,4 +94,3 @@ router.get("*", function (req, res) {
 // // });
 
 module.exports = router;
->>>>>>> 9bd7b3e031734642a95f5b2e03bf5918b5280dd0
