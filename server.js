@@ -28,18 +28,17 @@ app.set("view engine", "handlebars");
 // Allow use of methods other than GET and POST in HTTP:
 app.use(methodOverride('_method'));
 
-<<<<<<< HEAD
-// Requiring our routes
-require('./routes/auth-api-routes')(app);
-require("./routes/api-routes")(app);
-require("./routes/html-routes")(app);
+// Requiring our routes FIXME: this commented out block was part of a merge error i commented out we should look through this and see what we need
+// require('./routes/auth-api-routes')(app);
+// require("./routes/api-routes")(app);
+// require("./routes/html-routes")(app);
 
-// Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-  });
-=======
+// // Syncing our database and logging a message to the user upon success
+// db.sequelize.sync().then(function() {
+//   app.listen(PORT, function() {
+//     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+//   });
+// });
 // Import routes and give the server access to them.
 var routes = require("./routes/htmlRoutes");
 var apiRoutes = require("./routes/apiRoutes");
@@ -76,5 +75,4 @@ if (process.env.NODE_ENV === "test") {
 app.listen(PORT, function() {
   // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
->>>>>>> 9bd7b3e031734642a95f5b2e03bf5918b5280dd0
 });
