@@ -1,0 +1,42 @@
+    
+
+.nav-wrapper{
+  color: blue;
+}
+.brand-logo{
+  color: green;
+}
+#test{
+  background-color: brown;
+}
+#testtt{
+    color: brown;
+    text-align: center;
+}
+
+.video-container{
+height: 10%;
+width: 100%;
+}
+#pid{
+font-size: 25px;
+
+}
+#DP,#dp3{
+  margin-left: 1250px;
+  margin-top: 40px;
+}
+#dp1,#dp2{
+  margin-left: 1300px;
+}
+
+#output{
+  margin-top: 30px;
+}
+
+
+
+
+
+
+

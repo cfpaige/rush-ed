@@ -28,6 +28,7 @@ app.set("view engine", "handlebars");
 // Allow use of methods other than GET and POST in HTTP:
 app.use(methodOverride('_method'));
 
+<<<<<<< HEAD
 // Requiring our routes
 require('./routes/auth-api-routes')(app);
 require("./routes/api-routes")(app);
@@ -38,4 +39,42 @@ db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
+=======
+// Import routes and give the server access to them.
+var routes = require("./routes/htmlRoutes");
+var apiRoutes = require("./routes/apiRoutes");
+
+app.use(apiRoutes);
+app.use(routes);
+
+// // Start our server so that it can begin listening to client requests.
+// app.listen(PORT, function() {
+//   // Log (server-side) when our server has started
+//   console.log("Server listening on: http://localhost:" + PORT);
+// });
+
+var syncOptions = { force: false };
+
+// If running a test, set syncOptions.force to true
+// clearing the `testdb`
+if (process.env.NODE_ENV === "test") {
+  syncOptions.force = true;
+};
+
+// Starting the server, syncing our models ------------------------------------/
+// db.sequelize.sync(syncOptions).then(function() {
+//   app.listen(PORT, function() {
+//     console.log(
+//       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+//       PORT,
+      
+//       PORT
+//     )
+//   })
+// })
+
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
+>>>>>>> 9bd7b3e031734642a95f5b2e03bf5918b5280dd0
 });
