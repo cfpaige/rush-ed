@@ -51,6 +51,12 @@ router.get("*", function (req, res) {
   res.render("404");
 });
 
+<<<<<<< HEAD
+  // Render 404 page for any unmatched routes
+  router.get("*", function (req, res) {
+    res.render("404");
+  });
+=======
 
 
 
@@ -97,3 +103,4 @@ router.get("*", function (req, res) {
 // // });
 
 module.exports = router;
+>>>>>>> 9bd7b3e031734642a95f5b2e03bf5918b5280dd0
