@@ -1,3 +1,6 @@
+// SETUP WITHOUT SEQUELIZE:
+// ===============================================================
+
 // Set up MySQL connection.
 var mysql = require("mysql");
 

@@ -1,11 +1,99 @@
-    
+
+ <div class="row">
+    <div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1497668319663-af2fa49df87e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+          <span class="card-title black text">ENGINEERING</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a class="waves-effect waves-light btn" id="engButton">button</a>
+        </div>
+      </div>
+    </div>
+
+<div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+          <span class="card-title black text">MEDICAL</span>
+        </div>
+        <div class="card-content">
+         <div id="medical"></div>
+        </div>
+        <div class="card-action">
+           <a class="waves-effect waves-light btn" id="medButton">button</a>
+        </div>
+      </div>
+    </div>
+
+<div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1559813114-cda845612ae7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
+          <span class="card-title black text">ARTS</span>
+        </div>
+        <div class="card-content">
+          <div id="data-view"></div>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1>hi everyone!</h1>
 <form id="add">
     city: <input type="text" name="city" id="city" ><br>
      department: <input type="text" name="dept" id="dept" ><br>
     <input  type="submit"  value="Submit">
 </form>
-<div id="data-view"></div>
+
+<form id="find">
+    city: <input type="text" name="place" id="place" ><br>
+     job: <input type="text" name="job" id="job" ><br>
+    <input  type="submit"  value="Submit">
+</form>
+
+
 
 {{!-- <button type="button" id="addme">Click Me!</button> --}}
 
@@ -31,12 +119,52 @@ $("#add").on("submit", function (event) {
     
     },            
     ).then(function (response) {
-        console.log(response);
+        //console.log(response);
+        response.forEach(function(entry) {
+            
+            var div=$('<div>').text("collegename:"+entry['school.name']+entry['school.accreditor']);
+                $("#data-view").append(div);
+           console.log(entry['school.name']);
+});
         var arr=[''];
          var coll_name=response[0]['school.name'];
-         $("#data-view").text("COLLEGE:"+response[0]['school.name']+'\n'+"College WEBSITE:"+response[0]['school.school_url']+"\n"+"College Accreditor:"+response[0]['school.accreditor']+
+         //$("#data-view").text("COLLEGE:"+response[0]['school.name']+'\n'+"College WEBSITE:"+response[0]['school.school_url']+"\n"+"College Accreditor:"+response[0]['school.accreditor']+
          
-         "\n"+"ADMISSION RATE:"+response[0]['latest.admissions.admission_rate.overall']+"\n"+"zip-code:"+response[0]['school.zip']);
+         //"\n"+"ADMISSION RATE:"+response[0]['latest.admissions.admission_rate.overall']+"\n"+"zip-code:"+response[0]['school.zip']);
+         
+           } );
+            
+        });
+
+<<<<<<< HEAD
+=======
+
+
+//try medical
+
+
+console.log("inside handle bar");
+$("#medButton").on("click", function (event) {
+    
+
+    console.log("hello medical button");
+
+
+    $.ajax({
+        url :"/api/college",
+        method: "GET" 
+        
+    
+    },            
+    ).then(function (response) {
+        //console.log(response);
+        response.forEach(function(entry) {
+            
+            var div=$('<div>').text("collegename:"+entry['school.name']+entry['school.accreditor']);
+                $("#medical").append(div);
+           //console.log(entry['school.name']);
+});
+        
          
            } );
              
@@ -47,6 +175,78 @@ $("#add").on("submit", function (event) {
             
         });
     
+
+
+
+$("#find").on("submit", function (event) {
+    event.preventDefault();
+
+
+    //console.log(city);
+    var jobdata={
+        place:$("#place").val(),
+        job:$("#job").val()
+       };
+    console.log("place"+jobdata.place);
+    $.ajax({
+        url :"/api/college/job",
+        method: "POST", 
+        data:jobdata
     
+    },            
+    ).then(function (response) {
+        //console.log(response);
+        //console.log(typeof(response));
+
+        var json=JSON.parse(response);
+
+        
+         
+        var job_location=json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionLocation[0].LocationName;
+        var orgname=json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.OrganizationName;
+        
+       var job_title1=json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionTitle;
+       var job_title2=job_title=json.SearchResult.SearchResultItems[1].MatchedObjectDescriptor.PositionTitle;
+       var job_title3= job_title=json.SearchResult.SearchResultItems[2].MatchedObjectDescriptor.PositionTitle;
+       var job_title4=json.SearchResult.SearchResultItems[3].MatchedObjectDescriptor.PositionTitle;
+      
+       console.log(job_title1,job_title2,job_title3,job_title4);
+   
+   
+   
+   
+    });
+});
+        
+         
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+>>>>>>> 9bd7b3e031734642a95f5b2e03bf5918b5280dd0
 </script>
 
