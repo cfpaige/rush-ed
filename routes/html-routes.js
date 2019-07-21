@@ -16,26 +16,34 @@ module.exports = function (app) {
 // TODO: create handlebars 'profile', 'login' and 'signup' files and change auth paths to use those instead:
     app.get("/", function (req, res) {
         // If the user already has an account send them to the members page
-        if (req.user) {
-            res.redirect("/members");
-            // handlebars alternative:
-            // res.render("index", user)
+        if (req.isAuthenticated()) {
+            var user = {
+                id: res.user.id,
+                email: res.user.email
+            };
+            // res.redirect("/members");
+            // // handlebars alternative:
+            res.render("studentprofile", user)
         }
-        res.sendFile(path.join(__dirname, "../public/signup.html"));
+        // res.sendFile(path.join(__dirname, "../public/signup.html"));
         // handlebars alternative:
-        // res.render("signup")
+        res.render("signup")
     });
 // TODO:
     app.get("/login", function (req, res) {
         // If the user already has an account send them to the members page
-        if (req.user) {
-            res.redirect("/members");
+        if (req.isAuthenticated()) {
+            var user = {
+                id: res.user.id,
+                email: res.user.email
+            };
+            // res.redirect("/members");
             // handlebars alternative:
-            // res.render("index", user)
+            res.render("studentprofile", user)
         }
-        res.sendFile(path.join(__dirname, "../public/login.html"));
+        // res.sendFile(path.join(__dirname, "../public/login.html"));
         // handlebars alternative:
-        // res.render("login")
+        res.render("login")
     });
 // TODO: create 'signup' handlebars file:
     app.get('/signup', function (req, res) {
@@ -47,49 +55,49 @@ module.exports = function (app) {
 // If a user who is not logged in tries to access those routes they will be redirected to the signup page.
 
 // TODO: change to 'profile' with handlebars:
-    app.get("/members", isAuthenticated, function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/members.html"));
+    app.get("/profile", isAuthenticated, function (req, res) {
+        // res.sendFile(path.join(__dirname, "../public/members.html"));
         // handlebars alternative:
-        // res.render("profile")
+        res.render("studentprofile")
     });
 
 // TODO: change example to fetch profile-specific helper and load into profile page:
-    app.get('/profile/mycolleges', isAuthenticated, function (req, res) {
-        db.Example.findAll({}).then(function (dbExamples) {
-            res.render("index", {
-                msg: "Welcome!",
-                examples: dbExamples
-            });
-        })
-    });
+    // app.get('/profile/mycolleges', isAuthenticated, function (req, res) {
+    //     db.Example.findAll({}).then(function (dbExamples) {
+    //         res.render("index", {
+    //             msg: "Welcome!",
+    //             examples: dbExamples
+    //         });
+    //     })
+    // });
 
 // TODO: change example to fetch profile-specific helper and load into profile page:
-    app.get('/profile/mycareers', isAuthenticated, function (req, res) {
-        db.Example.findAll({}).then(function (dbExamples) {
-            res.render("index", {
-                msg: "Welcome!",
-                examples: dbExamples
-            });
-        })
-    });
+    // app.get('/profile/mycareers', isAuthenticated, function (req, res) {
+    //     db.Example.findAll({}).then(function (dbExamples) {
+    //         res.render("index", {
+    //             msg: "Welcome!",
+    //             examples: dbExamples
+    //         });
+    //     })
+    // });
 
 // TODO: Change example to add functionality so user can delete saved favs by id:
-    app.get("/profile/:id", function (req, res) {
-        db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-            res.render("profile", {
-                example: dbExample
-            });
-        })
-    });
+    // app.get("/profile/:id", function (req, res) {
+    //     db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
+    //         res.render("profile", {
+    //             example: dbExample
+    //         });
+    //     })
+    // });
 
 // TODO: If needed, change example to add functionality so user can click through to see more info:
-    app.get("/profile/:id", function (req, res) {
-        db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-            res.render("profile", {
-                example: dbExample
-            });
-        })
-    });
+    // app.get("/profile/:id", function (req, res) {
+    //     db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
+    //         res.render("profile", {
+    //             example: dbExample
+    //         });
+    //     })
+    // });
 
 // ========================= PUBLIC ROUTES ========================
 // Our app's publicly accessible HTML routes go here.
