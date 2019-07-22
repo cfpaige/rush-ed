@@ -12,7 +12,7 @@
         <li><a href="/college">college</a></li>
         <li><a href="/career">Career</a></li>
         <li><a href="/profile"> profile</a></li>
-        <li><a href="/signup">Login</a></li>
+        <li><a class='modal-trigger' href="#modal1">Login</a></li>
       </ul>
     </div>
   </nav>
@@ -241,6 +241,16 @@
 </div>
 </div>
 
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
 
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -253,6 +263,8 @@
   });  
           
          
-
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
         
       </script>
