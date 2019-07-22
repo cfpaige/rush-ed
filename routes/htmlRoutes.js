@@ -1,11 +1,10 @@
-// const connection = require('../config/connection.js'); FIXME: cannot find this but i don't think we actually need this?
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 var apiRoutes = require('./apiRoutes');
 
 // Load index page
-router.get("/home", function (req, res) {
+router.get("/", function (req, res) {
   console.log("html route");
   res.render("home");
 });
