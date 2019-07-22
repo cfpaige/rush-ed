@@ -1,4 +1,8 @@
-function grabApprenticeOffice(place) {
+
+
+function grabApprenticeOffice(city, state) {
+
+    let place = city + '%2C' + state;
 
     let queryURL = '/api/apprenticeship/' + place;
 
@@ -10,7 +14,7 @@ function grabApprenticeOffice(place) {
         for (people in contacts) {
             let newDiv = $('<div>');
             let person = contacts[people];
-            let name = person.ContactName;
+            let name = $('<p>').text(person.ContactName).attr('class', 'name');
             let address
             if (person.Address1.length > 0) {
                 address = person.Address1;
@@ -23,11 +27,19 @@ function grabApprenticeOffice(place) {
                     address = person.Address2;
                 }
             }
-            let city = person.City;
-            let state = person.State;
-            let phone = person.ContactPhone;
-            let email = person.ContactEmail;
-            console.log(name, address, city, state, phone, email)
+            let addressBox = $('<p>').text(address)
+            let city = $('<p>').text(person.City);
+            let state = $('<p>').text(person.State);
+            let phone = $('<p>').text(person.ContactPhone);
+            let email = $('<p>').text(person.ContactEmail).attr('class', 'url');
+            newDiv.append(name);
+            newDiv.append(addressBox);
+            newDiv.append(city);
+            newDiv.append(state);
+            newDiv.append(email);
+            newDiv.append(phone)
+            //append to the list
+            console.log(person)
         }
     });
 };
@@ -41,10 +53,14 @@ function grabCertData(field) {
     }).then(function(response) {
         let certList = response.CertList;
         for(cert in certList) {
+            let newDiv = $('<div>')
             let theCert = certList[cert];
-            let name = theCert.Name;
-            let description = theCert.Description;
-            let certURL = theCert.Url;
+            let name = $('<p>').text(theCert.Name);
+            let description = $('<p>').text(theCert.Description);
+            let certURL = $('<a>').text(theCert.Url).attr('href', theCert.Url);
+            newDiv.append(name);
+            newDiv.append(description);
+            newDiv.append(certURL);
             console.log(name, description, certURL)
         }
     })
@@ -58,10 +74,14 @@ function grabLicenseData(field, state) {
     }).then(function(response) {
         let licenseList = response.LicenseList;
         for(license in licenseList) {
+            let newDiv = $('<div');
             let theLicense = licenseList[license];
-            let title = theLicense.Title ;
-            let description = theLicense.Description;
-            let licenseURL = theLicense.LicenseAgency.Url;
+            let title =  $('<p>').text(theLicense.Title);
+            let description =  $('<p>').text(theLicense.Description);
+            let licenseURL =  $('<p>').text(theLicense.LicenseAgency.Url);
+            newDiv.append(title);
+            newDiv.append(description);
+            newDiv.append(licenseURL);
             console.log(title, description, licenseURL);
         }
     })
