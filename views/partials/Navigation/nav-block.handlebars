@@ -3,7 +3,7 @@
   <!-- Links -->
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item">
-      <a class="nav-link" href="/home" data-home={{home}}>HOME</a>
+      <a class="nav-link" href="/#" data-home={{home}}>HOME</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/college" data-college={{college}}>COLLEGES</a>
@@ -12,7 +12,7 @@
       <a class="nav-link" href="/career" data-career={{career}}>CAREERS</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/profile" data-user={{user}}>PROFILE</a>
+      <a class="nav-link" href="/profile" data-user={{user-profile}}>PROFILE</a>
     </li>
     {{#if isloggedin}}
       <li class="nav-item">
@@ -20,10 +20,10 @@
       </li>
     {{else}}
       <li class="nav-item">
-        <a class="nav-link" href="#" id="sign-in-modal">SIGNIN</a>
+        <a class="nav-link" href="#" id="sign-in-modal">LOG IN</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/signup" data-signup={{signup}}>SIGNUP</a>
+        <a class="nav-link" href="/signup" data-signup={{signup}}>SIGN UP</a>
       </li>
     {{/if}}
   </ul>

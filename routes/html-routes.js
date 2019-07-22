@@ -5,7 +5,7 @@
 var path = require('path');
 
 // Requiring our custom middleware for checking if a user is logged in:
-var isAuthenticated = require('../config/middleware/isAuthenticated');
+var isAuthenticated = require('../config/.middleware/isAuthenticated');
 
 // Requiring models so we can perform queries on our database before loading pages:
 var db = require('../models');
@@ -13,49 +13,36 @@ var db = require('../models');
 module.exports = function (app) {
 
 // ==================== AUTHENTICATION ROUTES ====================
-// TODO: create handlebars 'profile', 'login' and 'signup' files and change auth paths to use those instead:
-    app.get('/profile', function (req, res) {
-        // If the user already has an account send them to the members page
-        if (req.isAuthenticated()) {
-            var user = {
-                id: res.dbUser.id,
-                email: res.dbUser.email
-            };
-            // res.redirect('/members');
-            // // handlebars alternative:
-            res.render('user-profile', user)
-        }
-        // res.sendFile(path.join(__dirname, '../public/signup.html'));
-        // handlebars alternative:
-        res.render('signup')
-    });
-// TODO:
-    app.get('/login', function (req, res) {
-        // If the user already has an account send them to their profile page
-        if (req.isAuthenticated()) {
-            var user = {
-                id: res.dbUser.id,
-                email: res.dbUser.email
-            };
-            res.render('user-profile', user)
-        }
-        res.render('signup')
-    });
-// TODO: create 'signup' handlebars file:
-    app.get('/signup', function (req, res) {
-        res.render('signup')
-    });
+
+app.get("/", function (req, res) {
+    console.log("html route");
+    res.render("home");
+  });
+
+app.get("/signup", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/profile");
+    }
+    res.render('signup');
+  });
+
+  app.get("/login", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/profile");
+    }
+    res.render('login');
+  });
+
 
 // ========================= PROTECTED ROUTES ========================
 // Here we add our isAuthenticated middleware to specified routes.
 // If a user who is not logged in tries to access those routes they will be redirected to the signup page.
 
-// // TODO: change to 'profile' with handlebars:
-//     app.get('/profile', isAuthenticated, function (req, res) {
-//         // res.sendFile(path.join(__dirname, '../public/members.html'));
-//         // handlebars alternative:
-//         res.render('studentprofile')
-//     });
+app.get("/profile", isAuthenticated, function(req, res) {
+    res.render('user-profile')
+});
 
 // TODO: change example to fetch profile-specific helper and load into profile page:
     // app.get('/profile/mycolleges', isAuthenticated, function (req, res) {
