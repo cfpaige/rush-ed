@@ -29,9 +29,12 @@ app.set('view engine', 'handlebars');
 // Allow use of methods other than GET and POST in HTTP:
 app.use(methodOverride('_method'));
 
+let apiRoutes = require('./routes/apiRoutes')
+
 // Requiring all routes: 
 require('./routes/auth-api-routes')(app, passport);
 require('./routes/api-routes')(app, passport);
+app.use(apiRoutes);
 require('./routes/html-routes')(app, passport);
 
 var syncOptions = { force: false };

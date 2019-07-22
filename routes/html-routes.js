@@ -92,7 +92,7 @@ app.get("/profile", isAuthenticated, function(req, res) {
 
     app.get('/career', function (req, res) {
         console.log('Html route to career page.');
-        res.render('career');
+        res.render('certification');
     })
 
 // ========================= UNMATCHED ROUTES ========================
