@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
   var loginForm = $("form.login");
-  var emailInput = $("input#email-input");
-  var passwordInput = $("input#password-input");
+  var emailInput = $("input#inputEmail");
+  var passwordInput = $("input#inputPassword");
 
   loginForm.on("submit", function (event) {
     event.preventDefault();

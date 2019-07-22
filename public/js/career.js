@@ -1,5 +1,3 @@
-
-
 function grabApprenticeOffice(city, state) {
 
     let place = city + '%2C' + state;
@@ -49,9 +47,9 @@ function grabCertData(field) {
     $.ajax({
         url: queryURL,
         method: 'GET'
-    }).then(function(response) {
+    }).then(function (response) {
         let certList = response.CertList;
-        for(cert in certList) {
+        for (cert in certList) {
             let newLi = $('<li>')
             newLi.attr('class', 'collection-item avatar')
             let newI = $('<i>').text('star').attr('class', 'material-icons circle green')
@@ -66,23 +64,23 @@ function grabCertData(field) {
             $('.certifications').append(newLi);
         }
     })
-}
+};
 
 function grabLicenseData(field, state) {
     let queryURL = '/api/licenses/' + field + '/' + state;
     $.ajax({
         url: queryURL,
         method: 'GET'
-    }).then(function(response) {
+    }).then(function (response) {
         let licenseList = response.LicenseList;
-        for(license in licenseList) {
+        for (license in licenseList) {
             let newLi = $('<li>');
             newLi.attr('class', 'collection-item avatar')
             let newI = $('<i>').text('star').attr('class', 'material-icons circle red')
             let theLicense = licenseList[license];
-            let title =  $('<p>').text(theLicense.Title);
-            let description =  $('<p>').text(theLicense.Description);
-            let licenseURL =  $('<p>').text(theLicense.LicenseAgency.Url);
+            let title = $('<p>').text(theLicense.Title);
+            let description = $('<p>').text(theLicense.Description);
+            let licenseURL = $('<p>').text(theLicense.LicenseAgency.Url);
             newLi.append(newI);
             newLi.append(title);
             newLi.append(description);
@@ -90,23 +88,20 @@ function grabLicenseData(field, state) {
             $('.license').append(newLi);
         }
     })
-}
+};
 
-window.onload = function() {
-    $('#submit').on('click', function(event) {
-      event.preventDefault();
+window.onload = function () {
+    $('#submit').on('click', function (event) {
+        event.preventDefault();
 
-      var answers = {
-        field: $('.field').val(),
-        city: $('.city').val(),
-        state: $('.state').val() 
-      }
+        var answers = {
+            field: $('.field').val(),
+            city: $('.city').val(),
+            state: $('.state').val()
+        }
 
-      grabApprenticeOffice(answers.city, answers.state);
-      grabCertData(answers.field);
-      grabLicenseData(answers.field, answers.state);
+        grabApprenticeOffice(answers.city, answers.state);
+        grabCertData(answers.field);
+        grabLicenseData(answers.field, answers.state);
     })
-
-}
-
-        
+};      

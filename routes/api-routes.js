@@ -1,33 +1,9 @@
 require('dotenv').config();
 const axios = require('axios');
+const request = require('request');
 var db = require("../models");
 
 module.exports = function (app) {
-
-  // TODO: rewrite examples to work for our routes:
-
-  // Get all examples
-  app.get("/api/examples", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
-  // Create a new example
-  app.post("/api/examples", function (req, res) {
-    db.Example.create(req.body).then(function (dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // ==============================
 
   app.post("/api/places", function (req, res) {
     let placeQuery = req.body;
@@ -88,5 +64,4 @@ module.exports = function (app) {
       console.log(error);
     })
   });
-
 };

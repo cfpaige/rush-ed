@@ -1,16 +1,14 @@
-<a href="/logout">Logout</a>
-<div class="container-profile">
-    <p id="username">Username: {{username}}</p>
+{{> Navigation/nav-block home=false college=false career=false profile=true signup=false}}
 
-   {{#if profileImage}}
-        <img id="profileImage" src="{{profileImage}}" alt="Default Image for now" />
-   {{/if}}
-
-   {{#unless profileImage}}
-        <img id="profileImage" src="https://www.law.berkeley.edu/wp-content/uploads/2015/04/Blank-profile.png" alt="Default Image for now" />
-
-   {{/unless}}
-
-    <p id="name">{{name}}</p>
-    <p id="email">{{email}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <p>Welcome <span class="user-name"></span>!</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h5>Here are your saved resources:</h5>
+    </div>
+  </div>
 </div>
