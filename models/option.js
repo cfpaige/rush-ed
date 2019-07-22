@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   var Option = sequelize.define("Option", {
-// sequelize auto-generates IDs, so not specifying it explicitly here
+    // sequelize auto-generates IDs, so not specifying it explicitly here
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,6 +25,6 @@ module.exports = function (sequelize, DataTypes) {
   });
   Option.associate = function (models) {
     Option.belongsToMany(models.User, { through: 'Favs' })
-    };
+  };
   return Option;
 };

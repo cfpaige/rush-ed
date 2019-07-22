@@ -4,75 +4,31 @@
 var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-// ==================== AUTHENTICATION ROUTES ====================
+    // ==================== AUTHENTICATION ROUTES ====================
 
-app.get("/signup", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/profile");
-    }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
-  });
+    app.get("/signup", function (req, res) {
+        if (req.user) {
+            res.redirect("/profile");
+        }
+        res.sendFile(path.join(__dirname, "../public/signup.html"));
+    });
 
-  app.get("/login", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/profile");
-    }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
-  });
+    app.get("/login", function (req, res) {
+        if (req.user) {
+            res.redirect("/profile");
+        }
+        res.sendFile(path.join(__dirname, "../public/login.html"));
+    });
 
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/profile", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/profile.html"));
-  });
+    app.get("/profile", isAuthenticated, function (req, res) {
+        res.render('profile');
+    });
 
-// ========================= PROTECTED ROUTES ========================
+    // ========================= PUBLIC ROUTES ========================
 
-// TODO: change example to fetch profile-specific helper and load into profile page:
-    // app.get('/profile/mycolleges', isAuthenticated, function (req, res) {
-    //     db.Example.findAll({}).then(function (dbExamples) {
-    //         res.render('index', {
-    //             msg: 'Welcome!',
-    //             examples: dbExamples
-    //         });
-    //     })
-    // });
-
-// TODO: change example to fetch profile-specific helper and load into profile page:
-    // app.get('/profile/mycareers', isAuthenticated, function (req, res) {
-    //     db.Example.findAll({}).then(function (dbExamples) {
-    //         res.render('index', {
-    //             msg: 'Welcome!',
-    //             examples: dbExamples
-    //         });
-    //     })
-    // });
-
-// TODO: Change example to add functionality so user can delete saved favs by id:
-    // app.get('/profile/:id', function (req, res) {
-    //     db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-    //         res.render('profile', {
-    //             example: dbExample
-    //         });
-    //     })
-    // });
-
-// TODO: If needed, change example to add functionality so user can click through to see more info:
-    // app.get('/profile/:id', function (req, res) {
-    //     db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-    //         res.render('profile', {
-    //             example: dbExample
-    //         });
-    //     })
-    // });
-
-// ========================= PUBLIC ROUTES ========================
-
-    app.get("/", function(req,res){
+    app.get("/", function (req, res) {
         res.render("home");
     });
 
@@ -86,8 +42,8 @@ app.get("/signup", function(req, res) {
         res.render('certification');
     })
 
-// ========================= UNMATCHED ROUTES ========================
-// Render 404 page for any routes not specified above:
+    // ========================= UNMATCHED ROUTES ========================
+    // Render 404 page for any routes not specified above:
 
     app.get('*', function (req, res) {
         res.render('404');
