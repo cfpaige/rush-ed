@@ -11,9 +11,9 @@ function grabApprenticeOffice(city, state) {
         method: 'GET'
     }).then(function (response) {
         let contacts = response.ApprenticeshipOfficeList[0].ListStateAppOfficeContact;
-        for (people in contacts) {
+        for (let i = 0; i < 4; i++) {
             let newDiv = $('<div>');
-            let person = contacts[people];
+            let person = contacts[i];
             let name = $('<p>').text(person.ContactName).attr('class', 'name');
             let address
             if (person.Address1.length > 0) {
@@ -38,7 +38,7 @@ function grabApprenticeOffice(city, state) {
             newDiv.append(state);
             newDiv.append(email);
             newDiv.append(phone)
-            //append to the list
+            $('person' + i).append(newDiv);
             console.log(person)
         }
     });
@@ -86,3 +86,5 @@ function grabLicenseData(field, state) {
         }
     })
 }
+
+grabApprenticeOffice('Seattle', 'WA');
