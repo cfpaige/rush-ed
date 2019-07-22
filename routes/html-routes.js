@@ -4,9 +4,6 @@
 // Requiring path to so we can use relative routes to our HTML files:
 var path = require('path');
 
-// Requiring our custom middleware for checking if a user is logged in:
-var isAuthenticated = require('../config/.middleware/isAuthenticated');
-
 // Requiring models so we can perform queries on our database before loading pages:
 var db = require('../models');
 
@@ -14,35 +11,41 @@ module.exports = function (app) {
 
 // ==================== AUTHENTICATION ROUTES ====================
 
-app.get("/", function (req, res) {
-    console.log("html route");
-    res.render("home");
-  });
+app.get("/", function(req,res){
+        res.render("home");
+    });
 
-app.get("/signup", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/profile");
+app.get("/profile", function(req,res){
+    if(req.isAuthenticated()){
+        var user = {
+            id: req.user,
+            isloggedin: req.isAuthenticated()
+        }
+        res.render("user-profile", user);
     }
-    res.render('signup');
-  });
+    else{
+        res.render("home");
+    }
+})
 
-  app.get("/login", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/profile");
+app.get("/signup", function(req,res){
+    if(req.isAuthenticated()){
+        res.redirect("/profile");
+    }else{
+       res.render("signup"); 
     }
-    res.render('login');
-  });
+});
+
+//   app.get("/login", function(req, res) {
+//     // If the user already has an account send them to the members page
+//     if (req.user) {
+//       res.redirect("/profile");
+//     }
+//     res.render('login');
+//   });
 
 
 // ========================= PROTECTED ROUTES ========================
-// Here we add our isAuthenticated middleware to specified routes.
-// If a user who is not logged in tries to access those routes they will be redirected to the signup page.
-
-app.get("/profile", isAuthenticated, function(req, res) {
-    res.render('user-profile')
-});
 
 // TODO: change example to fetch profile-specific helper and load into profile page:
     // app.get('/profile/mycolleges', isAuthenticated, function (req, res) {
@@ -90,10 +93,10 @@ app.get("/profile", isAuthenticated, function(req, res) {
         res.render('college');
     })
 
-    app.get('/career', function (req, res) {
-        console.log('Html route to career page.');
-        res.render('career');
-    })
+    // app.get('/career', function (req, res) {
+    //     console.log('Html route to career page.');
+    //     res.render('career');
+    // })
 
 // ========================= UNMATCHED ROUTES ========================
 // Render 404 page for any routes not specified above:

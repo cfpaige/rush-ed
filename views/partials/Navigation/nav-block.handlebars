@@ -1,18 +1,21 @@
+{{!-- <span class="sr-only">(current)</span> --}}
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <!-- Brand/logo -->
+  {{!-- <a class="navbar-brand" href="/">
+    <img id="go-home" border="0" alt="RushEd" src="../assets/" width="100" height="100" ALT="Rent-All">
+  </a> --}}
   
   <!-- Links -->
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item">
-      <a class="nav-link" href="/#" data-home={{home}}>HOME</a>
+      <a class="nav-link" href="/home" data-home={{home}}>HOME </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/college" data-college={{college}}>COLLEGES</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/career" data-career={{career}}>CAREERS</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/profile" data-user={{user-profile}}>PROFILE</a>
+      <a class="nav-link" href="/career" data-career={{certification}}>CAREER PATHS</a>
     </li>
     {{#if isloggedin}}
       <li class="nav-item">
@@ -20,10 +23,10 @@
       </li>
     {{else}}
       <li class="nav-item">
-        <a class="nav-link" href="#" id="sign-in-modal">LOG IN</a>
+        <a class="nav-link" href="#" id="sign-in-modal">SIGNIN</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/signup" data-signup={{signup}}>SIGN UP</a>
+        <a class="nav-link" href="/signup" data-signup={{signup}}>SIGNUP</a>
       </li>
     {{/if}}
   </ul>
