@@ -8,26 +8,26 @@ module.exports = function(app) {
 
 // ==================== AUTHENTICATION ROUTES ====================
 
-app.get("/profile", function(req, res) {
-    // If the user already has an account send them to the profile page
+app.get("/signup", function(req, res) {
+    // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/profile");
     }
-    res.render('signup');
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
-  app.get("/signup", function(req, res) {
-    // If the user already has an account send them to the profile page
+  app.get("/login", function(req, res) {
+    // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/profile");
     }
-    res.render('signup');
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/profile", isAuthenticated, function(req, res) {
-    res.render('profile');
+    res.sendFile(path.join(__dirname, "../public/profile.html"));
   });
 
 // ========================= PROTECTED ROUTES ========================

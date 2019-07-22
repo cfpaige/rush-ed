@@ -72,7 +72,7 @@ router.post("/api/college/job", function (req, res) {
     //var query_url="https://data.usajobs.gov/api/search?JobCategoryCode=2210&Keyword=Software Development&LocationName=Washington";
     //var authKey = process.env.job;    
     request({
-        url: 'https://data.usajobs.gov/api/search?page=2&ResultsPerPage=4&Keyword=' + job + '&LocationName=' + place,
+        url: 'https://data.usajobs.gov/api/search?page=1&ResultsPerPage=8&Keyword=' + job + '&LocationName=' + place,
         method: 'GET',
         headers: {
             "Host": host,

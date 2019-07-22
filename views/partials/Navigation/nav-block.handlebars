@@ -9,17 +9,13 @@
       <li><a href="/college">College</a></li>
       <li><a href="/career">Career</a></li>
       <li><a href="/profile"> Profile</a></li>
-      {{#if isloggedin}}
-      <li><a href="/logout">Log Out</a></li>
-      {{else}}
       <li>
-        <a href="/login" data-login={{login}}>Log In</a>
+        <a href="/login">Log In</a>
         {{!-- <a class="modal-trigger" href="#modal1" id="sign-in-modal">Log In</a> --}}
       </li>
       <li>
-        <a href="/signup" data-signup={{signup}}>Sign Up</a>
+        <a href="/signup">Sign Up</a>
       </li>
-      {{/if}}
     </ul>
   </div>
 </nav>
