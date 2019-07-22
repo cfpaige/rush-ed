@@ -1,23 +1,10 @@
-{{> Navigation/nav-block home=true college=false career=false profile=false signup=false}}
 
-<h1 id="testtt">blaaaaa</h1>
+<h1 id="testtt">RushEd</h1>
     <div class="parallax-container">
       <div class="parallax"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"></div>
     </div>
     <!--nav bar -->
-    <nav>
-    <div class="nav-wrapper" id="test">
-      <a href="#" class="brand-logo right">RushEd</a>
-      <img src="https://all4ed.org/wp-content/uploads/2015/11/graduation_cap_and_diploma-e1446671361500.png" width="80px" height="80px">
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="/home">home</a></li>
-        <li><a href="/college">college</a></li>
-        <li><a href="/career">Career</a></li>
-        <li><a href="/profile"> profile</a></li>
-        <li><a href="/signup">Login</a></li>
-      </ul>
-    </div>
-  </nav>
+{{> Navigation/nav-block home=true college=false career=false profile=false signup=false}}
 
 
 
@@ -243,6 +230,16 @@
 </div>
 </div>
 
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
 
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -255,6 +252,8 @@
   });  
           
          
-
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
         
       </script>

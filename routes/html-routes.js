@@ -1,49 +1,34 @@
 // ========================= HTML ROUTES =========================
 // All the routes below only handle which page the user gets sent to. 
 
-// Requiring path to so we can use relative routes to our HTML files:
-var path = require('path');
+var path = require("path");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-// Requiring models so we can perform queries on our database before loading pages:
-var db = require('../models');
-
-module.exports = function (app) {
+module.exports = function(app) {
 
 // ==================== AUTHENTICATION ROUTES ====================
 
-app.get("/", function(req,res){
-        res.render("home");
-    });
-
-app.get("/profile", function(req,res){
-    if(req.isAuthenticated()){
-        var user = {
-            id: req.user,
-            isloggedin: req.isAuthenticated()
-        }
-        res.render("user-profile", user);
+app.get("/profile", function(req, res) {
+    // If the user already has an account send them to the profile page
+    if (req.user) {
+      res.redirect("/profile");
     }
-    else{
-        res.render("home");
+    res.render('signup');
+  });
+
+  app.get("/signup", function(req, res) {
+    // If the user already has an account send them to the profile page
+    if (req.user) {
+      res.redirect("/profile");
     }
-})
+    res.render('signup');
+  });
 
-app.get("/signup", function(req,res){
-    if(req.isAuthenticated()){
-        res.redirect("/profile");
-    }else{
-       res.render("signup"); 
-    }
-});
-
-//   app.get("/login", function(req, res) {
-//     // If the user already has an account send them to the members page
-//     if (req.user) {
-//       res.redirect("/profile");
-//     }
-//     res.render('login');
-//   });
-
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  app.get("/profile", isAuthenticated, function(req, res) {
+    res.render('profile');
+  });
 
 // ========================= PROTECTED ROUTES ========================
 
@@ -86,17 +71,20 @@ app.get("/signup", function(req,res){
     // });
 
 // ========================= PUBLIC ROUTES ========================
-// Our app's publicly accessible HTML routes go here.
+
+    app.get("/", function(req,res){
+        res.render("home");
+    });
 
     app.get('/college', function (req, res) {
         console.log('Html route to colleges page.');
         res.render('college');
     })
 
-    // app.get('/career', function (req, res) {
-    //     console.log('Html route to career page.');
-    //     res.render('career');
-    // })
+    app.get('/career', function (req, res) {
+        console.log('Html route to career page.');
+        res.render('certification');
+    })
 
 // ========================= UNMATCHED ROUTES ========================
 // Render 404 page for any routes not specified above:
