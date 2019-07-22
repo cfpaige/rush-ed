@@ -5,7 +5,8 @@ var express = require('express');
 var session = require('express-session');
 var exphbs = require('express-handlebars');
 // Requiring passport as we've configured it
-var passport = require('./config/passport');
+var passport = require('passport');
+require('./config/passport');
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 3000;
