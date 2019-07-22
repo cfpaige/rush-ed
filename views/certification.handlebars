@@ -1,18 +1,6 @@
 <!--nav bar -->
-<nav>
-  <div class="nav-wrapper" id="test">
-    <a href="#" class="brand-logo right">RushEd</a>
-    <img src="https://all4ed.org/wp-content/uploads/2015/11/graduation_cap_and_diploma-e1446671361500.png" width="80px"
-      height="80px">
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a href="/home">Home</a></li>
-      <li><a href="/career">Career</a></li>
-      <li><a href="/college">College</a></li>
-      <li><a href="/profile">Profile</a></li>
-      <li><a class='modal-trigger' href="#modal1">Sign Up</a></li>
-    </ul>
-  </div>
-</nav>
+{{> Navigation/nav-block home=true college=false career=false profile=false signup=false}}
+
 <div class="divider"></div>
 <div class="section">
   <div class="row">

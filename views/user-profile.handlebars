@@ -1,20 +1,5 @@
 <!--nav bar content-->
-  <nav>
-    <div class="nav-wrapper" id="test">
-        <a href="#" class="brand-logo right">RushED</a>
-        <img src="https://all4ed.org/wp-content/uploads/2015/11/graduation_cap_and_diploma-e1446671361500.png" width="80px" height="80px">
-            <a href="#" class="sidenav-trigger white-text" data-target="mobile-links">
-              <i class="material-icons white-text">menu</i>
-            </a>
-               <ul id="nav-mobile" class="left hide-on-med-and-down">
-                  <li><a href="/home">Home</a></li>
-                  <li><a href="/career">Career</a></li>
-                  <li><a href="/college">College</a></li>
-                  <li><a href="/profile">profile</a></li>
-                  <li><a href="/signup">sign up</a></li>
-                </ul>
-    </div>
-  </nav>
+{{> Navigation/nav-block home=true college=false career=false profile=false signup=false}}
   <!--side nav-->
   <ul class="sidenav" id="mobile-links">
 
