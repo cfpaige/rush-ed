@@ -9,7 +9,6 @@ router.get("/", function (req, res) {
   res.render("home");
 });
 
-
 router.get("/college", function (req, res) {
   console.log("html route");
   res.render("college");
