@@ -1,0 +1,10 @@
+/* for the generic example main, delete once our own setup is ready: */
+.list-group-item {
+  line-height: 2.5;
+}
+
+/* for the generic passport signup, delete if restyled to match our look: */
+form.signup,
+form.login {
+  margin-top: 50px;
+}
