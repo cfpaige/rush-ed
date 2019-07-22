@@ -5,7 +5,7 @@ const router = express.Router();
 var apiRoutes = require('./apiRoutes');
 
 // Load index page
-router.get("/", function (req, res) {
+router.get("/home", function (req, res) {
   console.log("html route");
   res.render("home");
 });
@@ -18,14 +18,19 @@ router.get("/college", function (req, res) {
 
 
 
-router.get("/studentprofile", function (req, res) {
+router.get("/profile", function (req, res) {
   console.log("html route");
   res.render("studentprofile");
 });
 
-router.get("/college/job", function (req, res) {
+//router.get("/college/job", function (req, res) {
+//  console.log("html route");
+ // res.render("college");
+//});
+
+router.get("/career", function (req, res) {
   console.log("html route");
-  res.render("college");
+  res.render("certification");
 });
 
 // Secure Routes

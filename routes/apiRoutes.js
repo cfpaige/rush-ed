@@ -23,8 +23,9 @@ router.post("/api/college", function (req, res) {
     var dept = req.body.dept;
     console.log(req.body.city);
     console.log(req.body.dept);
-
-    axios.get("https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=" + process.env.college + "&latest.academics.program.bachelors.computer=1&school.city=" + city + "&_fields=id,school.name,id,school.zip,school.school_url,school.accreditor,latest.admissions.admission_rate.overall"
+    
+    axios.get( "https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key="+process.env.college+"&school.city="+city+"&school.operating=1&_fields=id,school.name,school.school_url,school.accreditor,school.branches,latest.cost.tuition.program_year,latest.aid.pell_grant_rate,latest.aid.federal_loan_rate,latest.cost.program_reporter.program_1.cip_6_digit.full_program,latest.cost.program_reporter.program_2.cip_6_digit.annualized",
+    
     ).then(function (response) {
 
 
@@ -59,17 +60,31 @@ router.get("/api/certification/:field", function (req, res) {
 })
 
 
-router.get("/api/college", function (req, res) {
-
-
-    axios.get("https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=" + process.env.college + "&latest.academics.program.certificate_lt_1_yr.biological=1&latest.academics.program.assoc.health=1&latest.academics.program.bachelors.health=2&_fields=id,school.name,school.city,school.zip,school.school_url,school.accreditor,latest.admissions.admission_rate.overall"
-    ).then(function (response) {
-
-
-        return res.json(response.data.results);
-    }).catch(function (error) {
-        console.log(error);
-    })
+router.post("/api/college/job", function(req, res) {
+  
+    
+  var place=req.body.place;
+  var job=req.body.job;
+  console.log("job"+job);
+  var host = 'data.usajobs.gov';  
+  var userAgent = 'helankjose@gmail.com';  
+  var authKey=process.env.job;
+  //var query_url="https://data.usajobs.gov/api/search?JobCategoryCode=2210&Keyword=Software Development&LocationName=Washington";
+  //var authKey = process.env.job;    
+  request({      
+    url: 'https://data.usajobs.gov/api/search?PositionTitle='+job+'&ResultsPerPage=10&LocationName='+place,      
+    method: 'GET',      
+    headers: {          
+        "Host": host,          
+        "User-Agent": userAgent,          
+        "Authorization-Key": authKey      
+    }  
+  }, function(error, response, body) {      
+    //var data = JSON.parse(body);  
+    //console.log(data);
+    console.log(body);
+    return res.json(body);
+  })
 });
 
 

@@ -1,18 +1,18 @@
-<h1 id="testtt">blaaaaa</h1>
+<h1 id="testtt">RushEd</h1>
     <div class="parallax-container">
       <div class="parallax"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"></div>
     </div>
     <!--nav bar -->
     <nav>
     <div class="nav-wrapper" id="test">
-      <a href="#" class="brand-logo right">Logo</a>
+      <a href="#" class="brand-logo right">RushEd</a>
       <img src="https://all4ed.org/wp-content/uploads/2015/11/graduation_cap_and_diploma-e1446671361500.png" width="80px" height="80px">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="#">Ranking</a></li>
-        <li><a href="#">Career path</a></li>
-        <li><a href="#">Prepare</a></li>
-        <li><a href="#">Student profile</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="/">home</a></li>
+        <li><a href="/college">college</a></li>
+        <li><a href="/career">Career</a></li>
+        <li><a href="/profile"> profile</a></li>
+        <li><a href="/signup">Login</a></li>
       </ul>
     </div>
   </nav>
@@ -30,7 +30,7 @@
         <div class="card-content">
           <p id="pid" class="brown-text text-darken-2">Self-assessment usually narrows your prospective choices considerably. Delving into the various majors still under consideration can help you further hone in on the right program.Login For Finding a Right Path!!
             Which Careers Pay the Highest/Lowest Salaries?
-Generally speaking, careers in medicine, business administration and STEM-related fields offered the highest annual salaries; meanwhile, careers in social sciences, arts and humanities paid the lowest wages. A report from FiveThirtyEight found that the following 10 positions were the national leaders in median annual earnings among recent graduates.
+              Generally speaking, careers in medicine, business administration and STEM-related fields offered the highest annual salaries; meanwhile, careers in social sciences, arts and humanities paid the lowest wages. A report from FiveThirtyEight found that the following 10 positions were the national leaders in median annual earnings among recent graduates.
           </p>
         </div>
         <div class="card-action">
@@ -42,9 +42,6 @@ Generally speaking, careers in medicine, business administration and STEM-relate
 
 
 
-
-
-
  <div class="row">
     <div class="col s12 m6 l4">
       <div class="card">
@@ -53,12 +50,9 @@ Generally speaking, careers in medicine, business administration and STEM-relate
           <span class="card-title black text">ENGINEERING</span>
         </div>
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+          <p>The broad field of engineering encompasses an array of rewarding opportunities. Most engineers focus on a specific specialization, such as civil, aerospace, or electrical engineering. No matter your specialization, qualified engineers are in demand in a variety of fields.</p>
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
+        
       </div>
     </div>
 
@@ -66,11 +60,10 @@ Generally speaking, careers in medicine, business administration and STEM-relate
       <div class="card">
         <div class="card-image">
           <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-          <span class="card-title black text">MEDICAL</span>
+          <span class="card-title black text" id="medical">MEDICAL</span>
         </div>
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+          <p> If you're seeking a personally and financially rewarding career consider the healthcare industry.</p></p>
         </div>
         <div class="card-action">
           <a href="#">This is a link</a>
@@ -85,12 +78,9 @@ Generally speaking, careers in medicine, business administration and STEM-relate
           <span class="card-title black text">ARTS</span>
         </div>
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+          <p> Liberal arts covers a vast array of fields and courses. In fact, liberal arts covers everything from language, literary studies, philosophy, sociology, and psychology, to mathematics, economics, art, art history, and graphic design.</p>
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
+       
       </div>
     </div>
 
@@ -227,15 +217,20 @@ Generally speaking, careers in medicine, business administration and STEM-relate
 
 </div>         
 
-
-
-
-
-
-
 </div>
 
+<div class="divider"></div>
+<div class="section">
 
+    <div class="carousel">
+    <a class="carousel-item" href="#one!"><img src="assets/images/gallery1.jpg"></a>
+    <a class="carousel-item" href="#two!"><img src="assets/images/gallery2.jpg"></a>
+    <a class="carousel-item" href="#three!"><img src="assets/images/gallery3.jpg"></a>
+    <a class="carousel-item" href="#four!"><img src="assets/images/gallery4.jpg"></a>
+    <a class="carousel-item" href="#five!"><img src="assets/images/gallery1.jpg"></a>
+  </div>
+      
+</div>
  
     
 
@@ -257,6 +252,8 @@ Generally speaking, careers in medicine, business administration and STEM-relate
 
  $(document).ready(function(){
     $('.parallax').parallax();
+    //carsoul
+     $('.carousel').carousel();
   });  
           
          

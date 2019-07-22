@@ -1,52 +1,344 @@
 
- <div class="row">
-    <div class="col s12 m6 l4">
-      <div class="card">
-        <div class="card-image">
-          <img src="https://images.unsplash.com/photo-1497668319663-af2fa49df87e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-          <span class="card-title black text">ENGINEERING</span>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div class="card-action">
-          <a class="waves-effect waves-light btn" id="engButton">button</a>
-        </div>
-      </div>
-    </div>
+ 
+ 
+ <!--college navbar-->
 
-<div class="col s12 m6 l4">
-      <div class="card">
-        <div class="card-image">
-          <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-          <span class="card-title black text">MEDICAL</span>
-        </div>
-        <div class="card-content">
-         <div id="medical"></div>
-        </div>
-        <div class="card-action">
-           <a class="waves-effect waves-light btn" id="medButton">button</a>
-        </div>
-      </div>
-    </div>
 
-<div class="col s12 m6 l4">
-      <div class="card">
-        <div class="card-image">
-          <img src="https://images.unsplash.com/photo-1559813114-cda845612ae7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
-          <span class="card-title black text">ARTS</span>
-        </div>
-        <div class="card-content">
-          <div id="data-view"></div>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
+<h3 id="head">What you plant now, you will harvest later!!</h3>
+   
+    <!--nav bar -->
+    <nav>
+    <div class="nav-wrapper" id="test">
+      <a href="#" class="brand-logo right">RushEd</a>
+      <img src="https://all4ed.org/wp-content/uploads/2015/11/graduation_cap_and_diploma-e1446671361500.png" width="80px" height="80px">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="#">Home</a></li>
+        <li><a href="./studentprofile.handlebars">College</a></li>
+        <li><a href="#">Certifications</a></li>
+        <li><a href="#">Student profile</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
     </div>
+  </nav>
 
+
+<div class="divider"></div>
+<div class="section">
+  <div class="row">
+    <div class="col l8">
+
+   
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="assets/images/stu2.jpeg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="assets/images/stu3.jpeg"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="assets/images/stu4.jpeg"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="assets/images/stu5.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+    
   </div>
+      
+ </div>
+ <div class="col l4">
+   <div class="card-panel white" id="myanimcard" style="margin-top:100px">
+        <div class="row">
+           
+             <div class="row">
+                 <div class="input-field col s8">
+                   <input  id="city" type="text" class="validate">
+                    <label class="active black-text" for="city">Top Colleges in your City</label>
+                 </div>
+                 <div class="col s4">
+                    <a class="waves-effect waves-light btn" style="margin-top: 30px" id="search">search</a>
+                 </div>
+            </div>
+       </div>
+       
+            
+      </div>
+ </div>
+  </div>
+</div>
+
+<!--search data display-->
+<div class="divider"></div>
+<div class="section">
+  <div class="row">
+      <div class="col l6">
+          
+              <div class="card-panel lime darken-2">
+                  <div class="row valign-wrapper">
+                      <div class="col s2">
+                          <img src="assets/images/coll1.jpeg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                      </div>
+                      <div class="col s10">
+                          <span class="black-text" id="collge1">
+                               <h6 id="col_name">Collge Name</h6>
+                               <h6 id="col_url">College WEBSITE:</h6>
+                               <h6 id="col_acreditor">Collge Name</h6>
+                              
+                               <h6 id="col_branches"></h6>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        
+  <div class="col l6">
+         
+              <div class="card-panel lime darken-2">
+                  <div class="row valign-wrapper">
+                      <div class="col s2">
+                          <img src="assets/images/coll2.jpeg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                      </div>
+                      <div class="col s10">
+                          <span class="black-text" id="collge1">
+                               <h6 id="col_name2">Collge Name</h6>
+                               <h6 id="col_url2">College WEBSITE:</h6>
+                               <h6 id="col_acreditor2">Collge Name</h6>
+                              
+                               <h6 id="col_branches2"></h6>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+   </div>
+
+   <div class="row">
+      <div class="col l6">
+          
+              <div class="card-panel lime darken-2">
+                  <div class="row valign-wrapper">
+                      <div class="col s2">
+                          <img src="assets/images/coll3.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                      </div>
+                      <div class="col s10">
+                          <span class="black-text" id="collge1">
+                               <h6 id="col_name3">Collge Name</h6>
+                               <h6 id="col_url3">College WEBSITE:</h6>
+                               <h6 id="col_acreditor3">Collge Name</h6>
+                              
+                               <h6 id="col_branches3"></h6>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        
+  <div class="col l6">
+         
+              <div class="card-panel lime darken-2">
+                  <div class="row valign-wrapper">
+                      <div class="col s2">
+                          <img src="assets/images/coll4.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                      </div>
+                      <div class="col s10">
+                          <span class="black-text" id="collge1">
+                               <h6 id="col_name4">Collge Name</h6>
+                               <h6 id="col_url4">College WEBSITE:</h6>
+                               <h6 id="col_acreditor4">Collge Name</h6>
+                              
+                               <h6 id="col_branches4"></h6>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+   </div>
+   <div class="row">
+      <div class="col l6">
+          
+              <div class="card-panel lime darken-21">
+                  <div class="row valign-wrapper">
+                      <div class="col s2">
+                          <img src="assets/images/coll5.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                      </div>
+                      <div class="col s10">
+                          <span class="black-text" id="collge1">
+                               <h6 id="col_name5">Collge Name</h6>
+                               <h6 id="col_url5">College WEBSITE:</h6>
+                               <h6 id="col_acreditor5">Collge Name</h6>
+                              
+                               <h6 id="col_branches5"></h6>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        
+  <div class="col l6">
+         
+              <div class="card-panel lime darken-2">
+                  <div class="row valign-wrapper">
+                      <div class="col s2">
+                          <img src="assets/images/coll7.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                      </div>
+                      <div class="col s10">
+                          <span class="black-text" id="collge1">
+                               <h6 id="col_name6">Collge Name</h6>
+                               <h6 id="col_url6">College WEBSITE:</h6>
+                               <h6 id="col_acreditor6">Collge Name</h6>
+                              
+                               <h6 id="col_branches6"></h6>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+   </div>
+</div>
+<!-- job serach-->
+<div class="devider"></div>
+<div class="section">
+
+<div class="row">
+    <div class="col s12 m6 l8">
+      <div class="card black" id="myanim3" style="margin-left: 600px">
+        <div class="card-content white-text">
+          <span class="card-title">Highest Paying Careers for College Graduates</span>
+          <p>Find Out the Job opportunities available for your course!! </p>
+          <div class="row">
+                 <div class="input-field col s6">
+                   <input  id="place" type="text" class="validate white-text">
+                    <label class="active white-text" for="state"> State</label>
+                 </div>
+                 <div class="input-field col s6">
+                   <input  id="job" type="text" class="validate white-text">
+                    <label class="active white-text" for="job">category</label>
+                 </div>
+                 <div class="col s4">
+                    <a class="waves-effect waves-light btn" id="findbtn">search</a>
+                 </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="divider"></div>
+<div class="section">
+<div class="row">
+  <div class="col s12 m6 l6">
+   <h5 id="title_job" class="blue-text text-darken-2">Highest paying Engineering Jobs</h5>
+  
+<ul class="collection">
+    <li class="collection-item avatar">
+      <i class="material-icons circle yellow">insert_chart</i>
+      <span class="title" id="position1">Petroleum Engineer</span>
+      <p id="job_info1">Average salary: $128,230 (£97,580) <br>
+         year of education:4yr
+         
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+  <i class="material-icons circle red">insert_chart</i>
+      <span class="title" id="position2">Aerospace Engineer</span>
+      <p id="job_info2">$109,650 (£83,440) <br>
+        year of education:4yr
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">insert_chart</i>
+      <span class="title" id="position3">Computer / Hardware Engineer</span>
+      <p id="job_info3">Average salary: $102,280 (£77,830) <br>
+         year of education:4yr
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+       <i class="material-icons circle blue">insert_chart</i>
+      <span class="title" id="position4">Software Engineer</span>
+      <p id="job_info4"> $100,080 (£76,160) <br>
+        year of education:4yr
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
+   </div>
+<!--second colum-->
+
+
+<div class="col s12 m6 l6">
+   <h5 id="position" class="blue-text text-darken-2">Highest paying Engineering Jobs</h5>
+  
+<ul class="collection">
+    <li class="collection-item avatar">
+      <i class="material-icons circle yellow">insert_chart</i>
+      <span class="title" id="jobname">Petroleum Engineer</span>
+      <p id="job_details">Average salary: $128,230 (£97,580) <br>
+         year of education:4yr
+         
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+  <i class="material-icons circle red">insert_chart</i>
+      <span class="title" id="jobname2">Aerospace Engineer</span>
+      <p id="job_details2">$109,650 (£83,440) <br>
+        year of education:4yr
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">insert_chart</i>
+      <span class="title" id="jobname3">Computer / Hardware Engineer</span>
+      <p id="job_details3">Average salary: $102,280 (£77,830) <br>
+         year of education:4yr
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+       <i class="material-icons circle blue">insert_chart</i>
+      <span class="title" id="jobname4">Software Engineer</span>
+      <p id="job_details4"> $100,080 (£76,160) <br>
+        year of education:4yr
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
+   </div>
+
+
+
+
+
+
+</div>     
+
+</div>
 
 
 
@@ -57,61 +349,38 @@
 
 
 
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+  </ul>
+</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h1>hi everyone!</h1>
-<form id="add">
-    city: <input type="text" name="city" id="city" ><br>
-     department: <input type="text" name="dept" id="dept" ><br>
-    <input  type="submit"  value="Submit">
-</form>
-
-<form id="find">
-    city: <input type="text" name="place" id="place" ><br>
-     job: <input type="text" name="job" id="job" ><br>
-    <input  type="submit"  value="Submit">
-</form>
-
-
-
-{{!-- <button type="button" id="addme">Click Me!</button> --}}
+ 
+ 
+ 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
 console.log("inside handle bar");
-$("#add").on("submit", function (event) {
-    event.preventDefault();
+$("#search").on("click", function (event) {
+    //event.preventDefault();
 
-    //console.log("hello 15");
+    console.log("hello 15");
 
     
     //console.log(city);
     var citydata={
-        city:$("#city").val(),
-        dept:$("#dept").val()
+        city:$("#city").val()
+       
        };
-    //console.log("city"+city_data.city);
+    console.log("city"+citydata.city);
     $.ajax({
         url :"/api/college",
         method: "POST", 
@@ -119,25 +388,49 @@ $("#add").on("submit", function (event) {
     
     },            
     ).then(function (response) {
-        //console.log(response);
-        response.forEach(function(entry) {
+        console.log(response[0]['latest.aid.pell_grant_rate']);
+        //card1
+        $("#col_name").text("College Name:"+response[0]['school.name']);
+        $("#col_url").text("College Website:"+response[0]['school.school_url']);
+        $("#col_acreditor").text("College Accreditor:"+response[0]['school.accreditor']);
+        $("#col_branches").text("Branches:"+response[0]['school.branches']);
+        //card2
+        $("#col_name2").text("College Name:"+response[1]['school.name']);
+        $("#col_url2").text("College Website:"+response[1]['school.school_url']);
+        $("#col_acreditor2").text("College Accreditor:"+response[1]['school.accreditor']);
+        $("#col_branches2").text("Branches:"+response[1]['school.branches']);
+        //card3
+        $("#col_name3").text("College Name:"+response[2]['school.name']);
+        $("#col_url3").text("College Website:"+response[2]['school.school_url']);
+        $("#col_acreditor3").text("College Accreditor:"+response[2]['school.accreditor']);
+        $("#col_branches3").text("Branches:"+response[2]['school.branches']);
+        //card4
+        $("#col_name4").text("College Name:"+response[3]['school.name']);
+        $("#col_url4").text("College Website:"+response[3]['school.school_url']);
+        $("#col_acreditor4").text("College Accreditor:"+response[3]['school.accreditor']);
+        $("#col_branches4").text("Branches:"+response[3]['school.branches']);
+        //card 5
+        $("#col_name5").text("College Name:"+response[4]['school.name']);
+        $("#col_url5").text("College Website:"+response[4]['school.school_url']);
+        $("#col_acreditor5").text("College Accreditor:"+response[4]['school.accreditor']);
+        $("#col_branches5").text("Branches:"+response[4]['school.branches']);
+         //card6
+         $("#col_name6").text("College Name:"+response[5]['school.name']);
+        $("#col_url6").text("College Website:"+response[5]['school.school_url']);
+        $("#col_acreditor6").text("College Accreditor:"+response[5]['school.accreditor']);
+        $("#col_branches6").text("Branches:"+response[5]['school.branches']);
+        //response.forEach(function(entry) {
             
-            var div=$('<div>').text("collegename:"+entry['school.name']+entry['school.accreditor']);
-                $("#data-view").append(div);
-           console.log(entry['school.name']);
-});
-        var arr=[''];
-         var coll_name=response[0]['school.name'];
-         //$("#data-view").text("COLLEGE:"+response[0]['school.name']+'\n'+"College WEBSITE:"+response[0]['school.school_url']+"\n"+"College Accreditor:"+response[0]['school.accreditor']+
-         
-         //"\n"+"ADMISSION RATE:"+response[0]['latest.admissions.admission_rate.overall']+"\n"+"zip-code:"+response[0]['school.zip']);
-         
+           // var div=$('<div>').text("collegename:"+entry['school.name']+entry['school.accreditor']);
+               // $("#data-view").append(div);
+           //console.log(entry['school.name']);
+//});
+        
            } );
+     
             
         });
 
-<<<<<<< HEAD
-=======
 
 
 //try medical
@@ -178,10 +471,8 @@ $("#medButton").on("click", function (event) {
 
 
 
-$("#find").on("submit", function (event) {
-    event.preventDefault();
-
-
+$("#findbtn").on("click", function (event) {
+   
     //console.log(city);
     var jobdata={
         place:$("#place").val(),
@@ -199,20 +490,77 @@ $("#find").on("submit", function (event) {
         //console.log(typeof(response));
 
         var json=JSON.parse(response);
+      //table row1
+        $("#title_job").text("Highest paying jobs for:"+$("#job").val());
+         $("#position1").text(json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionTitle);
+        $("#job_info1").text("location:"+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionLocation[0].CityName).append('<br/>');
+        $("#job_info1").append('<div>Organization:'+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.OrganizationName+'</div>');
+        $("#job_info1").append('<div>Salary Range:$'+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange+"-$"+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange+'</div>');
+        
+       //table row2
+       
+         $("#position2").text(json.SearchResult.SearchResultItems[1].MatchedObjectDescriptor.PositionTitle);
+        $("#job_info2").text("location:"+json.SearchResult.SearchResultItems[1].MatchedObjectDescriptor.PositionLocation[0].CityName).append('<br/>');
+        $("#job_info2").append('<div>Organization:'+json.SearchResult.SearchResultItems[1].MatchedObjectDescriptor.OrganizationName+'</div>');
+        $("#job_info2").append('<div>Salary Range:$'+json.SearchResult.SearchResultItems[1].MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange+"-$"+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange+'</div>');
+      //table row3
+       
+         $("#position3").text(json.SearchResult.SearchResultItems[2].MatchedObjectDescriptor.PositionTitle);
+        $("#job_info3").text("location:"+json.SearchResult.SearchResultItems[2].MatchedObjectDescriptor.PositionLocation[0].CityName).append('<br/>');
+        $("#job_info3").append('<div>Organization:'+json.SearchResult.SearchResultItems[2].MatchedObjectDescriptor.OrganizationName+'</div>');
+         $("#job_info3").append('<div>Salary Range:$'+json.SearchResult.SearchResultItems[2].MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange+"-$"+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange+'</div>');  
+        
+ //table row4
+       
+         $("#position4").text(json.SearchResult.SearchResultItems[3].MatchedObjectDescriptor.PositionTitle);
+        $("#job_info4").text("location:"+json.SearchResult.SearchResultItems[3].MatchedObjectDescriptor.PositionLocation[0].CityName).append('<br/>');
+        $("#job_info4").append('<div>Organization:'+json.SearchResult.SearchResultItems[3].MatchedObjectDescriptor.OrganizationName+'</div>');
+         $("#job_info4").append('<div>Salary Range:$'+json.SearchResult.SearchResultItems[3].MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange+"-$"+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange+'</div>');  
+        
 
+//table2
+
+//table row1
+        $("#position").text("Highest paying jobs for:"+$("#job").val());
+         $("#jobname").text(json.SearchResult.SearchResultItems[4].MatchedObjectDescriptor.PositionTitle);
+        $("#job_details").text("location:"+json.SearchResult.SearchResultItems[4].MatchedObjectDescriptor.PositionLocation[0].CityName).append('<br/>');
+        $("#job_details").append('<div>Organization:'+json.SearchResult.SearchResultItems[4].MatchedObjectDescriptor.OrganizationName+'</div>');
+        $("#job_details").append('<div>Salary Range:$'+json.SearchResult.SearchResultItems[4].MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange+"-$"+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange+'</div>');
         
-         
-        var job_location=json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionLocation[0].LocationName;
-        var orgname=json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.OrganizationName;
+       //table row2
+       
+         $("#jobname2").text(json.SearchResult.SearchResultItems[6].MatchedObjectDescriptor.PositionTitle);
+        $("#job_details2").text("location:"+json.SearchResult.SearchResultItems[6].MatchedObjectDescriptor.PositionLocation[0].CityName).append('<br/>');
+        $("#job_details2").append('<div>Organization:'+json.SearchResult.SearchResultItems[6].MatchedObjectDescriptor.OrganizationName+'</div>');
+        $("#job_details2").append('<div>Salary Range:$'+json.SearchResult.SearchResultItems[6].MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange+"-$"+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange+'</div>');
         
-       var job_title1=json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionTitle;
-       var job_title2=job_title=json.SearchResult.SearchResultItems[1].MatchedObjectDescriptor.PositionTitle;
-       var job_title3= job_title=json.SearchResult.SearchResultItems[2].MatchedObjectDescriptor.PositionTitle;
-       var job_title4=json.SearchResult.SearchResultItems[3].MatchedObjectDescriptor.PositionTitle;
-      
-       console.log(job_title1,job_title2,job_title3,job_title4);
-   
-   
+      //table row3
+       
+           
+         $("#jobname3").text(json.SearchResult.SearchResultItems[5].MatchedObjectDescriptor.PositionTitle);
+        $("#job_details3").text("location:"+json.SearchResult.SearchResultItems[5].MatchedObjectDescriptor.PositionLocation[0].CityName).append('<br/>');
+        $("#job_details3").append('<div>Organization:'+json.SearchResult.SearchResultItems[5].MatchedObjectDescriptor.OrganizationName+'</div>');
+        $("#job_details3").append('<div>Salary Range:$'+json.SearchResult.SearchResultItems[5].MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange+"-$"+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange+'</div>');
+        
+ //table row4
+       
+        
+
+         $("#jobname4").text(json.SearchResult.SearchResultItems[7].MatchedObjectDescriptor.PositionTitle);
+        $("#job_details4").text("location:"+json.SearchResult.SearchResultItems[7].MatchedObjectDescriptor.PositionLocation[0].CityName).append('<br/>');
+        $("#job_details4").append('<div>Organization:'+json.SearchResult.SearchResultItems[7].MatchedObjectDescriptor.OrganizationName+'</div>');
+        $("#job_details4").append('<div>Salary Range:$'+json.SearchResult.SearchResultItems[7].MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange+"-$"+json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange+'</div>');
+        
+
+
+
+
+
+
+       //console.log(job_title1,job_title2,job_title3,job_title4);
+  // console.log(json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange);
+   //console.log(json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange);
+   //console.log(json.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionURI);
    
    
     });
@@ -237,7 +585,16 @@ $("#find").on("submit", function (event) {
 
 
 
+//slider invoke
 
+  $(document).ready(function(){
+    $('.slider').slider();
+    //select option invoke
+     $('select').formSelect();
+     //action button
+     $('.fixed-action-btn').floatingActionButton();
+  });
+     
 
 
 
@@ -247,6 +604,6 @@ $("#find").on("submit", function (event) {
 
     
     
->>>>>>> 9bd7b3e031734642a95f5b2e03bf5918b5280dd0
 </script>
+
 
