@@ -2,48 +2,44 @@
 // All the routes below only handle which page the user gets sent to. 
 
 // Requiring path to so we can use relative routes to our HTML files:
-var path = require("path");
+var path = require('path');
 
 // Requiring our custom middleware for checking if a user is logged in:
-var isAuthenticated = require("../config/middleware/isAuthenticated");
+var isAuthenticated = require('../config/middleware/isAuthenticated');
 
 // Requiring models so we can perform queries on our database before loading pages:
-var db = require("../models");
+var db = require('../models');
 
 module.exports = function (app) {
 
 // ==================== AUTHENTICATION ROUTES ====================
 // TODO: create handlebars 'profile', 'login' and 'signup' files and change auth paths to use those instead:
-    app.get("/", function (req, res) {
+    app.get('/profile', function (req, res) {
         // If the user already has an account send them to the members page
         if (req.isAuthenticated()) {
             var user = {
-                id: res.user.id,
-                email: res.user.email
+                id: res.dbUser.id,
+                email: res.dbUser.email
             };
-            // res.redirect("/members");
+            // res.redirect('/members');
             // // handlebars alternative:
-            res.render("studentprofile", user)
+            res.render('user-profile', user)
         }
-        // res.sendFile(path.join(__dirname, "../public/signup.html"));
+        // res.sendFile(path.join(__dirname, '../public/signup.html'));
         // handlebars alternative:
-        res.render("signup")
+        res.render('signup')
     });
 // TODO:
-    app.get("/login", function (req, res) {
-        // If the user already has an account send them to the members page
+    app.get('/login', function (req, res) {
+        // If the user already has an account send them to their profile page
         if (req.isAuthenticated()) {
             var user = {
-                id: res.user.id,
-                email: res.user.email
+                id: res.dbUser.id,
+                email: res.dbUser.email
             };
-            // res.redirect("/members");
-            // handlebars alternative:
-            res.render("studentprofile", user)
+            res.render('user-profile', user)
         }
-        // res.sendFile(path.join(__dirname, "../public/login.html"));
-        // handlebars alternative:
-        res.render("login")
+        res.render('signup')
     });
 // TODO: create 'signup' handlebars file:
     app.get('/signup', function (req, res) {
@@ -54,18 +50,18 @@ module.exports = function (app) {
 // Here we add our isAuthenticated middleware to specified routes.
 // If a user who is not logged in tries to access those routes they will be redirected to the signup page.
 
-// TODO: change to 'profile' with handlebars:
-    app.get("/profile", isAuthenticated, function (req, res) {
-        // res.sendFile(path.join(__dirname, "../public/members.html"));
-        // handlebars alternative:
-        res.render("studentprofile")
-    });
+// // TODO: change to 'profile' with handlebars:
+//     app.get('/profile', isAuthenticated, function (req, res) {
+//         // res.sendFile(path.join(__dirname, '../public/members.html'));
+//         // handlebars alternative:
+//         res.render('studentprofile')
+//     });
 
 // TODO: change example to fetch profile-specific helper and load into profile page:
     // app.get('/profile/mycolleges', isAuthenticated, function (req, res) {
     //     db.Example.findAll({}).then(function (dbExamples) {
-    //         res.render("index", {
-    //             msg: "Welcome!",
+    //         res.render('index', {
+    //             msg: 'Welcome!',
     //             examples: dbExamples
     //         });
     //     })
@@ -74,26 +70,26 @@ module.exports = function (app) {
 // TODO: change example to fetch profile-specific helper and load into profile page:
     // app.get('/profile/mycareers', isAuthenticated, function (req, res) {
     //     db.Example.findAll({}).then(function (dbExamples) {
-    //         res.render("index", {
-    //             msg: "Welcome!",
+    //         res.render('index', {
+    //             msg: 'Welcome!',
     //             examples: dbExamples
     //         });
     //     })
     // });
 
 // TODO: Change example to add functionality so user can delete saved favs by id:
-    // app.get("/profile/:id", function (req, res) {
+    // app.get('/profile/:id', function (req, res) {
     //     db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-    //         res.render("profile", {
+    //         res.render('profile', {
     //             example: dbExample
     //         });
     //     })
     // });
 
 // TODO: If needed, change example to add functionality so user can click through to see more info:
-    // app.get("/profile/:id", function (req, res) {
+    // app.get('/profile/:id', function (req, res) {
     //     db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-    //         res.render("profile", {
+    //         res.render('profile', {
     //             example: dbExample
     //         });
     //     })
@@ -102,16 +98,20 @@ module.exports = function (app) {
 // ========================= PUBLIC ROUTES ========================
 // Our app's publicly accessible HTML routes go here.
 
-    app.get("/college", function (req, res) {
-        console.log("Html route to colleges' page.");
-        res.render("college");
+    app.get('/college', function (req, res) {
+        console.log('Html route to colleges page.');
+        res.render('college');
     })
 
+    app.get('/career', function (req, res) {
+        console.log('Html route to career page.');
+        res.render('career');
+    })
 
 // ========================= UNMATCHED ROUTES ========================
 // Render 404 page for any routes not specified above:
 
-    app.get("*", function (req, res) {
-        res.render("404");
+    app.get('*', function (req, res) {
+        res.render('404');
     });
 };
