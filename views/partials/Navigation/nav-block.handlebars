@@ -13,7 +13,7 @@
       <li><a href="/logout">Log Out</a></li>
       {{else}}
       <li>
-        <a href="#" id="sign-in-modal">Log In</a>
+        <a class="modal-trigger" href="#modal1" id="sign-in-modal">Log In</a>
       </li>
       <li>
         <a href="/signup" data-signup={{signup}}>Sign Up</a>
@@ -23,4 +23,21 @@
   </div>
 </nav>
 
-{{> Modal/signin-block}}
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <form>
+      <div class="form-group">
+        <label for="inputAccount">Email</label>
+        <input type="text" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+        <label for="inputAccount">Password (min 8 characters)</label>
+        <input type="password" class="form-control" id="account_password">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button id="sign-in" type="button" class="waves-effect waves-green btn-flat">Login</button>
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+  </div>
+</div>
