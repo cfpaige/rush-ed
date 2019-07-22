@@ -76,7 +76,7 @@ font-size: 25px;
   font-style: italic;
   
 }
-#myanimcard{
+#myanimcard3{
  
   position: relative;
   -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
@@ -88,7 +88,7 @@ font-size: 25px;
   animation-iteration-count: 2;
   animation-direction: alternate-reverse;  
 }
-#myanim3{
+#myanim31{
  
   position: relative;
   -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
