@@ -1,4 +1,3 @@
-// const connection = require('../config/connection.js'); FIXME: cannot find this but i don't think we actually need this?
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
@@ -17,14 +16,19 @@ router.get("/college", function (req, res) {
 
 
 
-router.get("/studentprofile", function (req, res) {
+router.get("/profile", function (req, res) {
   console.log("html route");
   res.render("studentprofile");
 });
 
-router.get("/college/job", function (req, res) {
+//router.get("/college/job", function (req, res) {
+//  console.log("html route");
+ // res.render("college");
+//});
+
+router.get("/career", function (req, res) {
   console.log("html route");
-  res.render("college");
+  res.render("certification");
 });
 
 // Secure Routes

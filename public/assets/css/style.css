@@ -10,8 +10,13 @@
   background-color: brown;
 }
 #testtt{
-    color: brown;
+    color:brown;
     text-align: center;
+}
+#head{
+  color:black;
+    text-align: center;
+    font-style: italic;
 }
 
 .video-container{
@@ -34,9 +39,89 @@ font-size: 25px;
   margin-top: 30px;
 }
 
+#col_name,#col_url,#col_acreditor,#col_branches{
+  color: green;
+  font-style: italic;
+  
+}
 
+#col_name1,#col_url1,#col_acreditor1,#col_branches1{
+  color: green;
+  font-style: italic;
+  
+}
+#col_name2,#col_url2,#col_acreditor2,#col_branches2{
+  color: green;
+  font-style: italic;
+  
+}
+#col_name3,#col_url3,#col_acreditor3,#col_branches3{
+  color: green;
+  font-style: italic;
+  
+}
 
+#col_name4,#col_url4,#col_acreditor4,#col_branches4{
+  color: green;
+  font-style: italic;
+  
+}
+#col_name5,#col_url5,#col_acreditor5,#col_branches5{
+  color: green;
+  font-style: italic;
+  
+}
+#col_name6,#col_url6,#col_acreditor6,#col_branches6{
+  color: green;
+  font-style: italic;
+  
+}
+#myanimcard3{
+ 
+  position: relative;
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-iteration-count: 2; /* Safari 4.0 - 8.0 */
+  -webkit-animation-direction: alternate-reverse; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: 2;
+  animation-direction: alternate-reverse;  
+}
+#myanim31{
+ 
+  position: relative;
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-iteration-count: 2; /* Safari 4.0 - 8.0 */
+  -webkit-animation-direction: normal; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: 2;
+  animation-direction: normal;  
+}
 
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  0%   {background-color:rgb(236, 183, 8); left:0px; top:0px;}
+  25%  {background-color:rgb(185, 197, 11); left:200px; top:0px;}
+  50%  {background-color:rgb(120, 153, 10); left:200px; top:200px;}
+  75%  {background-color:rgb(165, 243, 21); left:0px; top:200px;}
+  100% {background-color:rgb(47, 172, 16); left:0px; top:0px;}
+}
 
+/* Standard syntax */
+@keyframes example {
+  0%   {background-color:rgb(236, 183, 8); left:0px; top:0px;}
+  25%  {background-color:rgb(185, 197, 11); left:200px; top:0px;}
+  50%  {background-color:rgb(120, 153, 10); left:200px; top:200px;}
+  75%  {background-color:rgb(165, 243, 21); left:0px; top:200px;}
+  100% {background-color:rgb(47, 172, 16); left:0px; top:0px;}
+}
+
+#findbtn{
+margin-top: 10px;
+margin-left: 80px;
+}
 
 
