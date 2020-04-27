@@ -1,9 +1,12 @@
+// when page loads
 $(document).ready(function () {
 
+  // grab the required tags
   var loginForm = $("form.login");
   var emailInput = $("input#inputEmail");
   var passwordInput = $("input#inputPassword");
 
+  // logic for the login button submit
   loginForm.on("submit", function (event) {
     event.preventDefault();
     var userData = {
@@ -20,6 +23,7 @@ $(document).ready(function () {
     passwordInput.val("");
   });
 
+  // logic to log in the user
   function loginUser(email, password) {
     $.post("/login", {
       email: email,
