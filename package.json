@@ -1,7 +1,7 @@
 {
   "name": "rush-ed",
   "version": "1.0.0",
-  "description": "RushEd: Career Choice App",
+  "description": "RushEd: The Career Choice App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
