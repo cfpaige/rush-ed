@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 
+// api call to the google places api
 router.post("/api/places", function (req, res) {
     let placeQuery = req.body;
     let latitude = placeQuery['location[latitude]'];
@@ -16,6 +17,7 @@ router.post("/api/places", function (req, res) {
     })
 });
 
+// api call to the college scorecard database
 router.post("/api/college", function (req, res) {
     var city = req.body.city;
     var dept = req.body.dept;
@@ -32,6 +34,7 @@ router.post("/api/college", function (req, res) {
     })
 });
 
+// apprenticeship api call to careeronestop
 router.get("/api/apprenticeship/:place", function (req, res) {
     let place = req.params.place; //ex: Seattle,WA (city and state or just state)
     axios.get("https://api.careeronestop.org/v1/apprenticeshipfinder/" + process.env.COSID + "/" + place + "/25", { headers: { Authorization: "Bearer " + process.env.COSTOKEN } })
@@ -43,6 +46,7 @@ router.get("/api/apprenticeship/:place", function (req, res) {
         })
 });
 
+// certification api call to careeronestop
 router.get("/api/certification/:field", function (req, res) {
     let field = req.params.field; //ex: doctors
     console.log("https://api.careeronestop.org/v1/certificationfinder/" + process.env.COSID + "/" + field, { headers: { Authorization: "Bearer " + process.env.COSTOKEN } });
@@ -55,6 +59,7 @@ router.get("/api/certification/:field", function (req, res) {
         })
 });
 
+// grabs job data from usajobs
 router.post("/api/college/job", function (req, res) {
 
     var place = req.body.place;
@@ -82,6 +87,7 @@ router.post("/api/college/job", function (req, res) {
 
 });
 
+// api call for licenses to careeronestop
 router.get("/api/licenses/:field/:location", function (req, res) {
     let field = req.params.field; //ex: doctors
     let location = req.params.location; //ex: WA (NOT city and state)
@@ -94,6 +100,7 @@ router.get("/api/licenses/:field/:location", function (req, res) {
         })
 });
 
+// api call to the college scorecard database
 router.post("/api/college", function (req, res) {
     var city = req.body.city;
     var dept = req.body.dept;

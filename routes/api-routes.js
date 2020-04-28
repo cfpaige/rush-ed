@@ -5,6 +5,7 @@ var db = require("../models");
 
 module.exports = function (app) {
 
+  // the google places api call
   app.post("/api/places", function (req, res) {
     let placeQuery = req.body;
     let latitude = placeQuery['location[latitude]'];
@@ -17,6 +18,7 @@ module.exports = function (app) {
     })
   });
 
+  // the apprenticeship call to careeronestop
   app.get("/api/apprenticeship/:place", function (req, res) {
     let place = req.params.place; //ex: Seattle,WA (city and state or just state)
     axios.get("https://api.careeronestop.org/v1/apprenticeshipfinder/" + process.env.COSID + "/" + place + "/25", { headers: { Authorization: "Bearer " + process.env.COSTOKEN } })
@@ -28,6 +30,7 @@ module.exports = function (app) {
       })
   });
 
+  // the certification call to career one stop
   app.get("/api/certification/:field", function (req, res) {
     let field = req.params.field; //ex: doctors
     console.log("looook HERE", "https://api.careeronestop.org/v1/certificationfinder/" + process.env.COSID + "/" + field, { headers: { Authorization: "Bearer " + process.env.COSTOKEN } });
@@ -40,6 +43,7 @@ module.exports = function (app) {
       })
   })
 
+  // the licenses call to career one stop
   app.get("/api/licenses/:field/:location", function (req, res) {
     let field = req.params.field; //ex: doctors
     let location = req.params.location; //ex: WA (NOT city and state)
@@ -52,6 +56,7 @@ module.exports = function (app) {
       })
   })
 
+  // api call to the college score card database
   app.post("/api/college", function (req, res) {
     var city = req.body.city;
     var dept = req.body.dept;
