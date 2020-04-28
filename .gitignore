@@ -60,9 +60,11 @@ typings/
 # next.js build output
 .next
 
+# text editor stuff
+.vscode
+
+# other
 .DS_Store
 public/assets/img/structure.drawio
 public/assets/img/tables.drawio
-
-# text editor stuff
-.vscode
+package-lock.json
